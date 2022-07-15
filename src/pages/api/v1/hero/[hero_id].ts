@@ -1852,6 +1852,108 @@ const heroes = [
     },
 
 
+    {
+            
+        id: 34,
+        name: "Junker Queen" ,
+        health: 425,
+        armour: 0,
+        affiliation: "Junkers",
+        role: "Tank",
+        nationality: "Austrailian",
+        passive: {
+            name: "Adrenaline Rush",
+            description: "Heal from all damage over time dealt by wounds"
+        },
+        weapon: {
+            name: "Scattergun",
+            min_damage: 80,
+            ammo: 6,
+       },
+       abilities: {
+         ability_one: {
+            name: "Jagged Blade",
+            description: "Passive: Quick Melee wounds enemies, dealing damage over time Active: Throw your blade. Can re-activate to return it",    
+            damage: {
+                impact: 80,
+                wound: 15
+            },
+            healing: 15,
+            cooldown: 6,
+         },
+         ability_two: {
+            name: "Commanding Shout",
+            description: "Increase health by 200 and nearby allies health by 100. Increase movement speed by 30%",
+            duration: 5,
+            area_of_effect: 15, 
+            cooldown: 11,
+            move_speed: "+30%",
+            healing: {
+                self: 200,
+                team: 100
+            }
+         },
+         ability_three: {
+            name: "Carnage",
+            description: "Swing your axe to wound all enemies in front of you dealing damage over time",
+            damage: {
+                impact: 90,
+                wound: 40
+            },
+            healing: 40,
+            range: 5,
+            cooldown: 8
+         }
+       },
+       ultimate: {
+        name: "Rampage",
+        description: "Charge foward. Wound enemies, dealing damage over time and preventing them from being healed",
+        cost: 0,
+        healing: 100,
+        damage: 100,
+        area_of_effect: 5,
+       },
+    },
+
+    {
+            
+        id: 35,
+        name: "Sojorun" ,
+        health: 200,
+        armour: 0,
+        affiliation: "Overwatch",
+        role: "Damage",
+        nationality: "Canadian",
+        weapon: {
+            name: "Railgun",
+            damage: {
+                primary: 9,
+                secondary: 130,
+            },
+            ammo: 45,
+       },
+       abilities: {
+         ability_one: {
+            name: "Power Slide",
+            description: "Ground slide that can cancel into a high jump",    
+            cooldown: 6,
+         },
+         ability_two: {
+            name: "Disruptor Shot",
+            description: "Launch an energy shot that slows and deals damage to enemies within it.",
+            damage: 210,
+            area_of_effect: 5, 
+            cooldown: 15,
+            range: 30
+         },
+       },
+       ultimate: {
+        name: "Overclock",
+        description: "Railgun energy auto-charges for a short duration and charged shots pierce enemies.",
+        cost: 2100,
+        duration: 9
+       },
+    },
 ]
 
 
