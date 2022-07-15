@@ -9,7 +9,8 @@ class AboutBody extends React.Component {
                 <p className='InfoPara'>
                     This is a completely open-source API which allows developers to make requests 
                     and grab information about Overwatch 2. Currently the main focus is all about the 
-                    heroes and their abilies, damage, etc.
+                    heroes and their abilies, damage, etc. For characters, if the ability is a distance
+                    the number is always in meters, if it is a time the number is always in seconds
                 </p>
 
 
