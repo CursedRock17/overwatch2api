@@ -5,7 +5,7 @@ const heroes = [
        id: 1,
        name: "Ana" ,
        health: 200,
-       armour: 0,
+       
        weapon: {
         name: "Biotic Rifle",
         damage: 70,
@@ -19,7 +19,7 @@ const heroes = [
             name: "Sleep Dart",
             damage: 5,
             description: "Render an enemy useless for up to 5 seconds, but they can be awoken by getting shot at",
-            cooldown: 12,
+            cooldown: 15,
             projectle_speed: 60,
             duration: 5,
          },
@@ -52,7 +52,7 @@ const heroes = [
         id: 2,
         name: "Ashe" ,
         health: 200,
-        armour: 0,
+        
         weapon: {
             name: "The Viper",
             damage_unscoped: 40,
@@ -83,7 +83,7 @@ const heroes = [
         ultimate: {
          name: "B.O.B.",
          description: "Call in B.O.B. a robot which runs until it hits a solid surface or player in which he then begins to autolock and shoot his enemies",
-         health: 1200,
+         health: 1000,
          damage: {
             charge: 120,
             arm: 112,
@@ -102,7 +102,6 @@ const heroes = [
         id: 3,
         name: "Baptiste" ,
         health: 200,
-        armour: 0,
         weapon: {
             name: "Biotic Launcher",
             damage: 24,
@@ -113,13 +112,12 @@ const heroes = [
             healing_explosion: 50,
             healing_direct: 70,
             reload_time: 1.5,
-
+            range: 20,
         },
         abilities: {
           ability_one: {
             name: "Regenerative Burst",
-            healing_team: 15,
-            healing_self: 30,
+            healing: 100,
             description: "Over time heal teamates in a small area",
             cooldown: 13,
             duration: 5,
@@ -158,44 +156,33 @@ const heroes = [
         weapon: {
             name: "Configuration:Recon",
             max_falloff: 40,
-            damage: 20,
-            ammo: 35,
-            rate_of_fire: 8,
+            damage: 25,
+            ammo: 25,
+            rate_of_fire: 5,
             reload_time: 1.5,
-
         },
         abilities: {
           ability_one: {
-            name: "Configuration:Sentry",
-            damage: 15,
-            description: "Bastion turns into a stationary turret and utilizes their machine gun, but this changed in overwatch 2",
-            cooldown: 0,
-            duration: 0,
+            name: "Configuration:Assault",
+            damage: 12,
+            description: "Bastion turns into a tank where he has the turrent but is slowly mobile",
+            cooldown: 10,
+            duration: 6,
             rate_of_fire: 30,
-            ammo: 300,
-            reload:2.1,
+            move_speed: "-65%"
+            
           },
           ability_two: {
-             name: "Self-Repair",
-             healing: 90,
-             cast_time: 0.5,
-             description: "Bastion Extends a healing device based on a overheating type mechanic",
-             cooldown: 1,
-             duration: 3.33,
+             name: "A-36 Tactical Grenade",
+             description: "Bastion Shoots a grenade which can bounce once",
+             damage: 120,
+             cooldown: 8
           }
         },
         ultimate: {
-         name: "Configuration:Tank",
-         description: "Bastion turns into a tank in which they can move around and fire shells, these shells do exposive damage",
-         damage_direct: 205,
-         damage_splash: 140,
-         damage_self: 28,
-         cost: 2310,
-         duration: 8,
-         cast_time: 1.5,
-         rate_of_fire: 1,
-         area_of_effect: 4,
-         projectile_speed: 60,
+         name: "Configuration:Artillery",
+         description: "Bastion turns into a mortar in which he fires 3 shells, these shells do exposive damage when landing back down from the sky",
+         ammo: 3,
         },
         age: 30,
         affiliation: "None",
@@ -245,12 +232,11 @@ const heroes = [
         },
         ability_three: {
             name: "Shield Bash",
-            damage: 5,
+            damage: 50,
             description: "Dash Forward stunning a single enemy on contact",
-            cooldown: 7,
-            duration: 0.75,
+            cooldown: 5,
             area_of_effect: 60,
-            range: 6.85,
+            range: 12,
             move_speed: "500",
         },
         ultimate: {
@@ -272,7 +258,7 @@ const heroes = [
         id: 6,
         name: "Cassidy" ,
         health: 225,
-        armour: 0,
+        
         weapon: {
             name: "Peacekeeper",
             max_falloff: 40,
@@ -291,13 +277,14 @@ const heroes = [
             cooldown: 6,
             duration: 0.4,
             move_speed: 15,
+            damage_reduction: "50%"
           },
           ability_two: {
-             name: "Flashbang",
-             damage: 25,
+             name: "Magnetic Grenade",
+             damage: 131,
              cast_time: 0.35,
-             description: "Quickly and shortly disable an enemy with a CC that renders them useless",
-             area_of_effect: 3,
+             description: "Throw a grenade which can get connected to an enemy dealing a quick burst of damage",
+             area_of_effect: 10,
              range: 7,
              cooldown: 10,
              duration: 0.8,
@@ -308,9 +295,9 @@ const heroes = [
          description: "Charge up the peacekeeper to deal massive amounts of damage in each of the 6 rounds",
          range: 200,
          rate_of_fire: 1.2,
-         duration: 6.2,
-         damage: 100,
-         cost: 1680,
+         duration: 7,
+         damage: 130,
+         cost: 1848,
          move_speed: "-70%"
         },
         age: 37,
@@ -322,11 +309,11 @@ const heroes = [
      {
         id: 7,
         name: "D.Va (Mech)" ,
-        health: 300,
-        armour: 300,
+        health: 350,
+        armor: 300,
         weapon: {
             name: "Fusion Cannons",
-            max_falloff: 20,
+            range: 20,
             damage: 2,
             rate_of_fire: 6.67,
             move_speed: "-40%"
@@ -379,7 +366,7 @@ const heroes = [
         id: 8,
         name: "D.Va (Pilot)" ,
         health: 150,
-        armour: 0,
+        
         weapon: {
             name: "Light Gun",
             projectile_speed: 50,
@@ -406,8 +393,7 @@ const heroes = [
      {
          id: 9,
          name: "Doomfist" ,
-         health: 350,
-         armour: 100,
+         health: 450,
          age: 45,
          affiliation: "Talon",
          role: "Tank",
@@ -436,14 +422,16 @@ const heroes = [
           },
           ability_two: {
              name: "Power Block",
-             damage_reduction: "90%",
+             damage_reduction: "80%",
              description: "Reduce all incoming damage by 90%",
+             move_speed: "65%",
              cooldown: 10,
              duration: 0.8,
           },
           ability_three: {
             name: "Rocket Punch",
-            damage: 70,
+            min_damage: 35,
+            max_damage: 70,
             description: "Use Doomfist's fist to charge and knock enemies back dealing damage on hit and impact with any surface",
             cooldown: 4,
             cast_time: 1,
@@ -467,7 +455,6 @@ const heroes = [
         id: 10,
         name: "Echo" ,
         health: 200,
-        armour: 0,
         affiliation: "Overwatch",
         role: "Damage",
         nationality: "Robot",
@@ -510,7 +497,7 @@ const heroes = [
            name: "Focusing Beam",
            description: "Echo channels a beam for a few seconds, dealing very high damage to targets with less than half health.",
            damage: 50,
-           damage_low: 200,
+           damage_low: 175,
            cooldown: 8,
            range: 16,
            duration: 2,
@@ -521,6 +508,7 @@ const heroes = [
         description: "Echo duplicates a targeted enemy hero and gains use of their abilities.",
         range: 40,
         cost: 2254,
+        max_tank_health: 300,
         duration: 15,
         cast_time: 0.35,
        },
@@ -530,7 +518,7 @@ const heroes = [
         id: 11,
         name: "Genji" ,
         health: 200,
-        armour: 0,
+        
         age: 35,
         affiliation: "Overwatch",
         role: "Damage",
@@ -582,7 +570,6 @@ const heroes = [
         id: 12,
         name: "Hanzo" ,
         health: 200,
-        armour: 0,
         age: 38,
         affiliation: "Shimada Clan",
         role: "Damage",
@@ -611,7 +598,7 @@ const heroes = [
             description: "Hanzo’s next several arrows fire instantly, but at reduced damage.",
             cooldown: 10,
             duration: 5,
-            damage: 70,
+            damage: 65,
             ammo: 5,
             rate_of_fire: 4,
             projectile_speed: 110,
@@ -639,7 +626,6 @@ const heroes = [
         id: 13,
         name: "Junkrat" ,
         health: 200,
-        armour: 0,
         age: 25,
         affiliation: "Junkers",
         role: "Damage",
@@ -677,10 +663,10 @@ const heroes = [
             name: "Steel Trap",
             description: "Junkrat tosses out a giant, metal-toothed trap. Should an enemy wander too close to the trap, it clamps on, injuring and immobilizing them.",
             cooldown: 10,
-            projectile_speed: 10,
-            damage: 80,
-            health: 100,
+            projectile_speed: 15,
             stun_duration: 3,
+            damage: 100,
+            health: 100,
             area_of_effect: 1,
          },
        },
@@ -701,7 +687,6 @@ const heroes = [
         id: 14,
         name: "Lucio" ,
         health: 200,
-        armour: 0,
         age: 26,
         affiliation: "Overwatch",
         role: "Support",
@@ -748,7 +733,7 @@ const heroes = [
        ultimate: {
         name: "Sound Barrier",
         description: "Protective waves radiate out from Lúcio’s Sonic Amplifier, briefly providing him and nearby allies with personal shields.",
-        cost: 2940,
+        cost: 2394,
         area_of_effect: 30,
         cast_time: 0.72,
         duration: 7,
@@ -760,18 +745,17 @@ const heroes = [
         id: 15,
         name: "Mei" ,
         health: 250,
-        armour: 0,
         age: 31,
         affiliation: "Overwatch",
         role: "Damage",
         nationality: "Chinese",
         weapon: {
            name: "Endothermic Blaster",
-           primary_damage: 55,
+           primary_damage: 100,
            secondary_damage: 75,
            primary_range: 10,
            freeze_duration: 1.3,
-           ammo: 120,
+           ammo: 150,
            primary_projectile_speed: 20,
            secondary_projectile_speed: 115,
            reload_time: 1.5,
@@ -788,8 +772,8 @@ const heroes = [
          ability_two: {
             name: "Ice Wall",
             description: "Mei generates an enormous ice wall that obstructs lines of sight, stops movement, and blocks attacks.",
-            health: 2000,
-            range: 35,
+            health: 1000,
+            range: 20,
             cooldown: 12,
             duration: 5,
          },
@@ -797,7 +781,7 @@ const heroes = [
        ultimate: {
         name: "Blizzard",
         description: "Mei deploys a weather-modification drone that emits gusts of wind and snow in a wide area. Enemies caught in the blizzard are slowed and take damage; those who linger too long are frozen solid.",
-        cost: 1610,
+        cost: 1851,
         area_of_effect: 10,
         cast_time: 0.5,
         duration: 4.25,
@@ -809,7 +793,6 @@ const heroes = [
         id: 16,
         name: "Mercy" ,
         health: 200,
-        armour: 0,
         age: 37,
         affiliation: "Overwatch",
         role: "Support",
@@ -818,7 +801,7 @@ const heroes = [
             passive_one: {
                 name: "Regeneration",
                 description: "Mercy automatically heals over time.",
-                healing: 20,
+                healing: 30,
             },
             passive_two: {
                 name: "Angelic Descent",
@@ -875,7 +858,6 @@ const heroes = [
         id: 17,
         name: "Moira" ,
         health: 200,
-        armour: 0,
         age: 48,
         affiliation: "Talon",
         role: "Support",
@@ -947,13 +929,16 @@ const heroes = [
             rate_of_fire: 10,
             move_speed: "-30%",
             projectile_speed: 120,
+            critical_damage: "+100%",
+            range: 25
        },
        abilities: {
          ability_one: {
             name: "Energy Javelin",
             description: "Orisa throws a javelin which deals knockback damage",
             projectile_speed: 20,
-            damage: 80,
+            damage: 60,
+            cooldown: 8,
             stun_duration: 0.2,
          },
          ability_two: {
@@ -971,7 +956,7 @@ const heroes = [
             cooldown: 7,
             damage: 90,
             duration : 1.75,
-            move_speed: "+60%"
+            move_speed: "+50%"
          }
        },
        ultimate: {
@@ -990,7 +975,7 @@ const heroes = [
         id: 19,
         name: "Pharah" ,
         health: 200,
-        armour: 0,
+        
         age: 32,
         affiliation: "Overwatch",
         role: "Damage",
@@ -1041,8 +1026,7 @@ const heroes = [
     {    
         id: 20,
         name: "Reaper" ,
-        health: 250,
-        armour: 0,
+        health: 250, 
         age: 58,
         affiliation: "Talon",
         role: "Damage",
@@ -1054,7 +1038,7 @@ const heroes = [
         },
         weapon: {
             name: "Hellfire Shotguns",    
-            damage: 120,
+            damage: 110,
             rate_of_fire: 2,
             ammo: 8,
             reload__time: 1.5,
@@ -1150,7 +1134,7 @@ const heroes = [
         id: 22,
         name: "Roadhog" ,
         health: 700,
-        armour: 0,
+        
         age: 48,
         affiliation: "Junkers",
         role: "Tank",
@@ -1201,7 +1185,7 @@ const heroes = [
         id: 23,
         name: "Sigma" ,
         health: 300,
-        armour: 100,
+        armour: 200,
         age: 62,
         affiliation: "Talon",
         role: "Tank",
@@ -1238,7 +1222,7 @@ const heroes = [
             name: "Accretion",
             description: "Sigma gathers a mass of debris and flings it at an enemy to knock them down.",
             damage: {
-                direct: 70,
+                direct: 100,
                 splash: 40,
                 self: 20
             },
@@ -1268,7 +1252,7 @@ const heroes = [
         id: 24,
         name: "Soldier: 76" ,
         health: 200,
-        armour: 0,
+        
         age: 53,
         affiliation: "Overwatch",
         role: "Damage",
@@ -1322,7 +1306,6 @@ const heroes = [
         id: 25,
         name: "Sombra" ,
         health: 200,
-        armour: 0,
         age: 30,
         affiliation: "Talon",
         role: "Damage",
@@ -1330,10 +1313,11 @@ const heroes = [
         passive: {
             name: "Opportunist",
             description: "Sombra detects critically injured enemies through walls.",
+            damage_boost: "+40%"
         },
         weapon: {
             name: "Machine Pistol",    
-            damage: 8,
+            damage: 7,
             rate_of_fire: 20,
             range: 35,
             reload_time: 1.4,
@@ -1344,17 +1328,19 @@ const heroes = [
             name: "Hack",
             description: "Sombra hacks enemies to temporarily stop them from using their abilities, or hacks first aid kits to make them useless to her opponents.",    
             range: 15,
-            cast_time: 0.65,
-            cooldown: 8,
+            cast_time: 0.85,
+            cooldown: 4,
             duration: 10,
-            health_pack_duration: 60
+            health_pack_duration: 30,
+            lock_duration: 1,
+            reveal_time: 8
          },
          ability_two: {
             name: "Stealth",
             description: "Sombra becomes invisible for a short period of time, during which her speed is boosted considerably. Attacking, using offensive abilities, or taking damage disables her camouflage.",
             move_speed: "+65%",
             cooldown: 6,
-            cast_time: 0.75
+            cast_time: 0.375
          },
          ability_three: {
             name: "Translocator",
@@ -1370,6 +1356,8 @@ const heroes = [
         cost: 1400,
         cast_time: 0.35,
         duration: 10,
+        damage: "+40%",
+        barrier_damage: 10000,
         area_of_effect: 15
        },
     },
@@ -1379,7 +1367,6 @@ const heroes = [
         id: 26,
         name: "Symmetra" ,
         health: 200,
-        armour: 0,
         age: 28,
         affiliation: "Vishkar Corporation",
         role: "Damage",
@@ -1392,14 +1379,14 @@ const heroes = [
                 third_phase: 180
             },
             secondary_damage: {
-                direct: 120,
-                splash: 60
+                direct: 90,
+                splash: 45
             },
             rate_of_fire: 20,
             primary_range: 12,
             reload_time: 1.35,
-            ammo: 70,
-            projectile_speed: 25
+            ammo: 100,
+            projectile_speed: 50
        },
        abilities: {
          ability_one: {
@@ -1409,16 +1396,17 @@ const heroes = [
             cast_time: 0.5,
             cooldown: 10,
             range: 10,
-            projectile_speed: 15,
+            projectile_speed: 20,
             damage: 40,
-            move_speed: "-20%"
+            move_speed: "-15%"
          },
          ability_two: {
             name: "Teleporter",
             description: "Symmetra places a temporary teleporter exit pad at a distance and connects it to a teleporter entry pad at her current location. Allies (and some of their abilities, such as Junkrat’s RIP-Tire) can travel from the entry pad to the exit pad instantly.",
-            health: 300,
-            cooldown: 10,
+            health: 200,
+            cooldown: 12,
             cast_time: 2,
+            duration: 10,
             range: 40,
             area_of_effect: 1.5
          },
@@ -1511,14 +1499,14 @@ const heroes = [
         id: 28,
         name: "Tracer" ,
         health: 150,
-        armour: 0,
+        
         age: 26,
         affiliation: "Overwatch",
         role: "Damage",
         nationality: "British",
         weapon: {
             name: "Pulse Pistols",
-            damage: 12,
+            damage: 10,
             ammo: 40,
             rate_of_fire: 20,
             range: 20,
@@ -1557,7 +1545,7 @@ const heroes = [
         id: 29,
         name: "Widowmaker" ,
         health: 200,
-        armour: 0,
+        
         age: 33,
         affiliation: "Talon",
         role: "Damage",
@@ -1612,7 +1600,7 @@ const heroes = [
         id: 30,
         name: "Winston" ,
         health: 350,
-        armour: 150,
+        armour: 200,
         age: 29,
         affiliation: "Overwatch",
         role: "Tank",
@@ -1621,15 +1609,12 @@ const heroes = [
             name: "Tesla Cannon",
             damage: {
                 primary: 60,
-                secondary: 80
+                secondary: 50
             },
             ammo: 100,
-            rate_of_fire: {
-                secondary: 10
-            },
             range: {
                 primary: 8,
-                secondary: 40
+                secondary: 30
             },
             reload_time: 1.7,
        },
@@ -1649,9 +1634,9 @@ const heroes = [
          ability_two: {
             name: "Barrier Projector",
             description: "Winston’s barrier projector extends a bubble-shaped field that absorbs damage until it's destroyed. Allies protected by the barrier can return fire from within it.",
-            duration: 9,
+            duration: 8,
             health: 700,
-            cooldown: 13,
+            cooldown: 12,
             area_of_effect: 5,
          },
        },
@@ -1673,8 +1658,8 @@ const heroes = [
             
         id: 31,
         name: "Wrecking Ball" ,
-        health: 500,
-        armour: 100,
+        health: 550,
+        armour: 150,
         age: 14,
         affiliation: "Luncheng Interstellar",
         role: "Tank",
@@ -1706,10 +1691,10 @@ const heroes = [
             name: "Adaptive Shield",
             description: "Wrecking Ball’s temporary personal shields absorb damage, providing stronger defenses if more opponents are nearby.",
             min_shield: 100,
-            max_shield: 550,
+            max_shield: 600,
             duration: 9,
             cooldown: 15,
-            area_of_effect: 8
+            area_of_effect: 10
          },
          ability_four: {
             name: "Piledriver",
@@ -1737,8 +1722,8 @@ const heroes = [
             
         id: 32,
         name: "Zarya" ,
-        health: 300,
-        armour: 100,
+        health: 250,
+        shield: 225,
         age: 28,
         affiliation: "Overwatch",
         role: "Tank",
@@ -1771,13 +1756,13 @@ const heroes = [
             description: "The Particle Cannon can emit a personal barrier that shields Zarya against incoming attacks, redirecting their energy to enhance her weapon’s damage and the width of its beam.",    
             health: 200,
             cooldown: 10,
-            duration: 2,
+            duration: 2.5,
             area_of_effect: 1.5,
          },
          ability_two: {
             name: "Projected Barrier",
             description: "Zarya surrounds one of her teammates with an energy barrier that simultaneously absorbs fire and boosts the power of her Particle Cannon.",
-            duration: 2,
+            duration: 2.5,
             area_of_effect: 1.5,
             cooldown: 8,
             range: 30,
@@ -1857,7 +1842,6 @@ const heroes = [
         id: 34,
         name: "Junker Queen" ,
         health: 425,
-        armour: 0,
         affiliation: "Junkers",
         role: "Tank",
         nationality: "Austrailian",
@@ -1920,7 +1904,6 @@ const heroes = [
         id: 35,
         name: "Sojorun" ,
         health: 200,
-        armour: 0,
         affiliation: "Overwatch",
         role: "Damage",
         nationality: "Canadian",
@@ -1931,6 +1914,7 @@ const heroes = [
                 secondary: 130,
             },
             ammo: 45,
+            rate_of_fire: 14,
        },
        abilities: {
          ability_one: {
