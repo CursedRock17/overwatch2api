@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import './Users.css'
+import styles from "./Users.module.css"
 
 import Navbar from "../../MainComponents/NavBar";
 import Footer from "../../MainComponents/Footer";
@@ -7,26 +7,24 @@ import UsersList from "./UsersListComponent";
 
 import { database } from "../../Firebase/FirebaseInit";
 import { collection, query, limit, getDocs, startAfter, orderBy } from "firebase/firestore";  
-//import { useSearchParams } from "react-router-dom";
+import { useRouter } from "next/router";
 
 import { QueryType } from "../../Types/UserTypes";
 
 const UserSearch = () => {
 
-   /*
-
     const [finalList, setFinalList] = useState([]);
     let temporaryList:any = [];
     const filterableArray:any = []
 
-    const [searchParams] = useSearchParams() 
+    const searchParams = useRouter() 
     const userCollection = collection(database, "fillAUser");
 
    const setList = async() => {
                        //Setting Types
                //It's messy because you can't map these out
          //------------------------------------>
-         const dpsmin = searchParams.get("DPSMin")
+         const dpsmin = searchParams.query.DPSMin
          const dpsminFilter = (arr:QueryType) => {
             if(!dpsmin){
                return arr;
@@ -36,7 +34,7 @@ const UserSearch = () => {
             }
          }
 
-         const dpsmax = searchParams.get("DPSMax")
+         const dpsmax = searchParams.query.DPSMax
          const dpsmaxFilter = (arr:QueryType) => {
             if(!dpsmax){
                return arr;
@@ -46,7 +44,7 @@ const UserSearch = () => {
             }
          }
 
-         const tankmin = searchParams.get("TankMin")
+         const tankmin = searchParams.query.TankMin
          const tankminFilter = (arr:QueryType) => {
             if(!tankmin){
                return arr;
@@ -56,7 +54,7 @@ const UserSearch = () => {
             }
          }
 
-         const tankmax = searchParams.get("TankMax")
+         const tankmax = searchParams.query.TankMax
          const tankmaxFilter = (arr:QueryType) => {
             if(!tankmax){
                return arr;
@@ -66,7 +64,7 @@ const UserSearch = () => {
             }
          }
 
-         const supportmin = searchParams.get("SupportMin")
+         const supportmin = searchParams.query.SupportMin
          const supportminFilter = (arr:QueryType) => {
             if(!supportmin){
                return arr;
@@ -76,7 +74,7 @@ const UserSearch = () => {
             }
          }
 
-         const supportmax = searchParams.get("SupportMax")
+         const supportmax = searchParams.query.SupportMax
          const supportmaxFilter = (arr:QueryType) => {
             if(!supportmax){
                return arr;
@@ -86,7 +84,7 @@ const UserSearch = () => {
             }
          }
 
-         const online = searchParams.get("Online")
+         const online = searchParams.query.Online
          const onlineFilter = (arr:QueryType) => {
             if(online == null){
                return arr;
@@ -96,7 +94,7 @@ const UserSearch = () => {
             }
          }
 
-         const microphone = searchParams.get("Microphone")
+         const microphone = searchParams.query.Microphone
          const microphoneFilter = (arr:QueryType) => {
             if(microphone == null){
                return arr;
@@ -106,7 +104,7 @@ const UserSearch = () => {
             }
          }
 
-         const region = searchParams.get("Region")
+         const region = searchParams.query.Region
          const regionFilter = (arr:QueryType) => {
             if(!region) {
                return arr;
@@ -116,7 +114,7 @@ const UserSearch = () => {
             }
          }
 
-         const playstyle = searchParams.get("Playstyle")
+         const playstyle = searchParams.query.Playstyle
          const playstyleFilter = (arr:QueryType) => {
             if(!playstyle) {
                return arr;
@@ -126,7 +124,7 @@ const UserSearch = () => {
             }
          }
 
-         const username = searchParams.get("Username");
+         const username = searchParams.query.Username
          const usernameFilter = (arr:QueryType) => {
             if(!username) {
                return arr;
@@ -162,7 +160,6 @@ const UserSearch = () => {
          .filter(playstyleFilter)
          .filter(usernameFilter)
       )
-         console.log(temporaryList)
         //End of tempList Loop
       }
 
@@ -172,11 +169,9 @@ const UserSearch = () => {
     useEffect(() => {
         setList();
     }, [])
-*/
 
-const finalList:any = [];
  return (
-    <div className="top">
+    <div className={styles.top}>
       <Navbar />
          <UsersList finalList={finalList}/>
       <Footer />

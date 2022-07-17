@@ -17,6 +17,7 @@ export const Navbar = () => {
            <div className={styles.NavGrid}>
                    <NavButton title="Account"/>
                    <NavButton title="Search"/>
+                   <NavButton title="AboutAPI"/>
             </div>
         </div>
     )

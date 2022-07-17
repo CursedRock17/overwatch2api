@@ -1,8 +1,9 @@
 import { useState } from "react";
 
 import { auth, database } from "../../Firebase/FirebaseInit";
-
 import { setDoc, arrayUnion, doc } from "firebase/firestore";
+
+import styles from "./Users.module.css"
 
 //Going to pass much of what I have as props
 
@@ -54,7 +55,7 @@ export const UsersList = (props:any) => {
         key={pageNum}
         id={String(pageNum)}
         onClick={changePage}
-        className="pageButton"
+        className={styles.pageButton}
         >
         {pageNum}
         </li>
@@ -79,7 +80,7 @@ export const UsersList = (props:any) => {
     return (
         <div>
         <>
-      <table className="content-table">
+      <table className={styles.contentTable}>
          <thead>
             <tr>
                <th>Username</th>
@@ -100,7 +101,7 @@ export const UsersList = (props:any) => {
       </table> 
      
       <div>
-        <ul className="pageNums">
+        <ul className={styles.pageNums}>
             {renderPageNums}
         </ul>
      </div> 
@@ -115,7 +116,7 @@ const DropMenu = (props:any) => {
  
     return (
        <a href="#" onClick={() => setOpen(!open)}>
-          <p className="ViewText"> View </p>
+          <p className={styles.ViewText}> View </p>
           {open && props.children}
        </a>
     )
@@ -130,14 +131,14 @@ const DropMenu = (props:any) => {
     }
  
     const mappedHeroes = totalHeroes.map((idx:string) => 
-          <li className="indexTag">
+          <li className={styles.indexTag}>
              {idx}
           </li>
     )
  
     return (
-       <div className="HeroesTable">
-          <ul className="indexTag">
+       <div className={styles.HeroesTable}>
+          <ul className={styles.indexTag}>
              {mappedHeroes}
           </ul>
        </div>

@@ -9,7 +9,7 @@
    background-color: #2C3531;
 }
  
- .content-table {
+ .contentTable {
    border-collapse: collapse;
    margin: 0;
    font-size: 15px;
@@ -19,42 +19,35 @@
    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
  }
  
- .content-table thead tr {
+ .contentTable thead tr {
    background-color: #116466;
    color: #D1E8E2;
    text-align: left;
    font-weight: bold;
  }
  
- .content-table th,
- .content-table td {
+ .contentTable th,
+ .contentTable td {
    padding: 12px 15px;
  }
  
- .content-table tbody tr {
+ .contentTable tbody tr {
    border-bottom: 1px solid #dddddd;
  }
  
- .content-table tbody tr:nth-of-type(even) {
+ .contentTable tbody tr:nth-of-type(even) {
    background-color: #f3f3f3;
  }
  
- .content-table tbody tr:last-of-type {
+ .contentTable tbody tr:last-of-type {
    border-bottom: 2px solid #116466;
  }
  
- .content-table tbody tr.active-row {
+ .contentTable tbody tr.active-row {
    font-weight: bold;
    color: #116466;
  }
  
-
-a{
-    text-decoration: none;
- }
- p, li, a{
-    font-size: 12px;
- } 
  .container{
     width: 720px;
     max-width: 340px;
@@ -162,13 +155,9 @@ a{
 }
 
  @media (min-width: 1200px) {
-   .content-table {
+   .contentTable {
       font-size: 18px;
     }
-
-    p, li, a{
-      font-size: 18px;
-   } 
 
    .Loading {
       font-size: 48px;
@@ -180,10 +169,7 @@ a{
 }
 
 @media (max-width: 800px) {
-   .content-table{
-      font-size: 12px;
-   }
-   p, li, a{
+   .contentTable{
       font-size: 12px;
    }
    
@@ -198,12 +184,10 @@ a{
 }
 
 @media (max-width: 500px) {
-   .content-table{
+   .contentTable{
       font-size: 7px;
    }
-   p, li, a{
-      font-size: 7px;
-   } 
+
    .Loading {
       font-size: 14px;
    }

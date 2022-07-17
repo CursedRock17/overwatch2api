@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { heroes } from "../../../utils/heroes";
 
-import styles from "../../styles/Documentation.module.css"
+import styles from "../../../styles/Documentation.module.css"
 
 const DocumentPage:NextPage = () => {
 
@@ -18,7 +18,7 @@ const DocumentPage:NextPage = () => {
         <div>
             <Navbar />
             <div className={styles.DocsBody}>
-
+                
             <h1 className={styles.TopHeader}> How to Use</h1>
             <h2 className={styles.TopHeader}> Base API Request: http://localhost:3000/api/v1/</h2>
             <h2 className={styles.TopHeader}> Requests </h2>
