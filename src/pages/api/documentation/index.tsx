@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import Navbar from "../../../Components/MainComponents/APINavbar";
+import Navbar from "../../../Components/MainAPIComponents/APINavbar";
 import { useState } from "react";
 
 import { heroes } from "../../../utils/heroes";

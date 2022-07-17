@@ -1,0 +1,93 @@
+.top {
+    display: flex;
+    flex-direction: column;
+    margin: -8px;
+  }
+
+.section {
+    background-color: #D4A59A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.EntireBox {
+    background-color: #d1e8e2;
+    box-shadow: 2px 2px rgb(70, 67, 67);
+    margin: 10px;
+    width: 90%;
+}
+
+.SetupBox {
+    display: flex;
+    flex-direction: row;
+    padding-left: 20px;
+    justify-content: space-evenly;
+}
+
+.LoginForm {
+    padding: 5px;
+}
+
+.LoginHead {
+    padding: 1px;
+    color: black;
+    font-size: 18px;
+}
+
+.LoginInputs {
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+}
+
+.LoginInputs:hover{
+    background-color: #4cdef4;
+    border-color: white;
+}
+
+.LogAllIn {
+    background-color: #116466;
+    opacity: 85%;
+    color: white;
+    border-radius: 14px;
+    width: 40%;
+    font-size: 12px;
+    margin: 4%;
+}
+
+.LogAllIn:hover {
+    background-color: #D9B08C;
+}
+
+.signUpSide{
+    display: flex;
+    flex-direction: column;
+}
+
+.logInSide {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.wrongThing {
+    color: rgb(31, 31, 31);
+    background-color: rgb(255, 80, 80);
+    opacity: 85%;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 90%;
+    width: 90%;
+    margin-left: 3%;
+}
+
+.errorMessage {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.filler {
+    height: 50vh;
+    background-color: #2C3531;
+}
