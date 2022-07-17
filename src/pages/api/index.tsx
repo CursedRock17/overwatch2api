@@ -1,11 +1,11 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { trpc } from "../utils/trpc";
+import { trpc } from "../../utils/trpc";
 
 import Link from "next/link";
 
-import Navbar from "../Components/MainComponents/Navbar";
-import AboutBody from "../Components/MainComponents/AboutBody";
+import Navbar from "../../Components/MainComponents/APINavbar";
+import AboutBody from "../../Components/MainComponents/APIAboutBody";
 
 import styles from "../styles/Home.module.css"
 
