@@ -43,7 +43,7 @@ const DocumentPage:NextPage = () => {
 
             <h3> Each Hero Id: </h3>
             {heroIndex}
-
+ 
             </div>
         </div>
     )
