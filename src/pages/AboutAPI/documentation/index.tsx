@@ -31,7 +31,7 @@ const DocumentPage:NextPage = () => {
             
             <ul>
                 <li className={styles.EndpointsList}>api/v1/hero/[hero_id]</li>
-                <li className={styles.EndpointsList}>api/v1/heroes </li>
+                <li className={styles.EndpointsList}>api/v1/heroes </li> 
                 <li className={styles.EndpointsList}>api/v1/maps </li>
                 <li className={styles.EndpointsList}>api/v1/map/[map_id] </li>
             </ul>
@@ -43,7 +43,7 @@ const DocumentPage:NextPage = () => {
 
             <h3> Each Hero Id: </h3>
             {heroIndex}
-
+ 
             </div>
         </div>
     )

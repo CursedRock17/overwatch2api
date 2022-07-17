@@ -35,5 +35,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 
-#FillARole without API
-public/*
+#FillARole without confidential info
+Firebase/*
