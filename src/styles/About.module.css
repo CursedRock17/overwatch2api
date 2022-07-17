@@ -1,0 +1,38 @@
+.InfoPara {
+    width: 80%;
+    padding: 5%;
+    margin: 5%;
+    font-size: 18px;
+}
+
+.headerFont {
+    font-size: 32px;
+    padding-left: 15px;
+  }
+
+  @media (max-width: 800) {
+    .headerFont {
+        font-size: 24px;
+    }
+    .InfoPara { 
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 500px) {
+    .headerFont {
+        font-size: 20px;
+    }
+    .InfoPara { 
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .headerFont {
+        font-size: 48px;
+    }
+    .InfoPara { 
+        font-size: 24px;
+    }
+}

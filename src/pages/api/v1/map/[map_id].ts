@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { heroes } from "../../../../utils/heroes";
+import mapsJSON from "../../../../utils/maps.json";
 
 
 export default (req:NextApiRequest, res:NextApiResponse) => {
@@ -11,8 +11,8 @@ export default (req:NextApiRequest, res:NextApiResponse) => {
       switch (method) {
         case 'GET':
           // Get data from your database
-          const currentId:number = Number(req.query.hero_id) - 1
-          const currentHero = heroes[currentId]
+          const currentMap:string = String(req.query.map_id)
+          const currentHero = mapsJSON[0]?.Hanamura
           
           res.status(200).json({ currentHero })
           break

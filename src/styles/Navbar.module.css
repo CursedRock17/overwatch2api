@@ -1,0 +1,16 @@
+    .Navbar {
+      display: flex;
+      justify-content: space-evenly;
+      background-color: black;
+    }
+    .SupportLink {
+        color: #d1e2e2;
+    }
+    .SupportArea {
+        display: flex;
+        justify-content: center;
+    }
+    .SupportLink:hover {
+        text-shadow: 0 0 5px yellow;
+        cursor: pointer;
+    }

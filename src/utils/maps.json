@@ -1,0 +1,232 @@
+[{
+    "Hanamura": {
+        "Id": 1,
+        "Type": "Assault",
+        "Location": "Japan"
+    },
+    "Temple of Anubis": {
+        "Id": 2,
+        "Type": "Assault",
+        "Location": "Egypt"
+    },
+    "Volskaya Industries": {
+        "Id": 3,
+        "Type": "Assault",
+        "Location": "Russia"
+    },
+    "Gothenburg": {
+        "Id": 4,
+        "Type": "Assault",
+        "Location": "Sweeden"
+    },
+    "Horizon Lunar Colony": {
+        "Id": 5,
+        "Type": "Assault",
+        "Location": "Earth's Moon"
+    },
+    "Paris": {
+        "Id": 6,
+        "Type": "Assault",
+        "Location": "France"
+    },
+    "Circuit Royal": {
+        "Id": 7,
+        "Type": "Escort",
+        "Location": "Poland"
+    },
+    "Dorado": {
+        "Id": 8,
+        "Type": "Escort",
+        "Location": "Mexico"
+    },
+    "Havana": {
+        "Id": 9,
+        "Type": "Escort",
+        "Location": "Cuba"
+    },
+    "Junkertown": {
+        "Id": 9,
+        "Type": "Escort",
+        "Location": "Australia"
+    },
+    "Rialto": {
+        "Id": 10,
+        "Type": "Escort",
+        "Location": "Italy"
+    },
+    "Route 66": {
+        "Id": 11,
+        "Type": "Escort",
+        "Location": "United States of America"
+    },
+    "Watchpoint: Gibraltar": {
+        "Id": 12,
+        "Type": "Escort",
+        "Location": "Gibraltar"
+    },
+    "Blizzard World": {
+        "Id": 13,
+        "Type": "Hybrid",
+        "Location": "United States of America"
+    },
+    "Eichenwalde": {
+        "Id": 14,
+        "Type": "Hybrid",
+        "Location": "German"
+    },
+    "Hollywood": {
+        "Id": 15,
+        "Type": "Hybrid",
+        "Location": "United States of America"
+    },
+    "King's Row": {
+        "Id": 16,
+        "Type": "Hybrid",
+        "Location": "United Kingdom"
+    },
+    "Midtown": {
+        "Id": 17,
+        "Type": "Hybrid",
+        "Location": "United States of America"
+    },
+    "Numbani": {
+        "Id": 18,
+        "Type": "Hybrid",
+        "Location": "Africa"
+    },
+    "Paraíso": {
+        "Id": 19,
+        "Type": "Hybrid",
+        "Location": "Brazil"
+    },
+    "Busan": {
+        "Id": 20,
+        "Type": "Control",
+        "Location": "South Korea",
+        "Map_One": {
+            "Name": "Downtown"
+        },
+        "Map_Two": {
+            "Name": "Sanctuary"
+        },
+        "Map_Three": {
+            "Name": "MEKA Base"
+        }
+    },
+    "Ilios": {
+        "Id": 21,
+        "Type": "Control",
+        "Location": "South Greece",
+        "Map_One": {
+            "Name": "Ruins"
+        },
+        "Map_Two": {
+            "Name": "Lighthouse"
+        },
+        "Map_Three": {
+            "Name": "Well"
+        }
+    },
+    "Lijiang Tower": {
+        "Id": 22,
+        "Type": "Control",
+        "Location": "China",
+        "Map_One": {
+            "Name": "Garden"
+        },
+        "Map_Two": {
+            "Name": "Control Center"
+        },
+        "Map_Three": {
+            "Name": "Night Market"
+        }
+    },
+    "Nepal": {
+        "Id": 23,
+        "Type": "Control",
+        "Location": "Nepal",
+        "Map_One": {
+            "Name": "Village"
+        },
+        "Map_Two": {
+            "Name": "Shrine"
+        },
+        "Map_Three": {
+            "Name": "Sanctum"
+        }
+    },
+    "Oasis": {
+        "Id": 24,
+        "Type": "Control",
+        "Location": "Iraq",
+        "Map_One": {
+            "Name": "City Center"
+        },
+        "Map_Two": {
+            "Name": "Gardens"
+        },
+        "Map_Three": {
+            "Name": "University"
+        }
+    },
+    "Colosseo": {
+        "Id": 25,
+        "Type": "Push",
+        "Location": "Italy"
+    },
+    "New Queen Street": {
+        "Id": 26,
+        "Type": "Push",
+        "Location": "Canada"
+    },
+    "Portugal": {
+        "Id": 27,
+        "Type": "Push",
+        "Location": "Portugal"
+    },
+    "Black Forest": {
+        "Id": 28,
+        "Type": "Elimination",
+        "Location": "Germany"
+    },
+    "Catillo": {
+        "Id": 29,
+        "Type": "Elimination",
+        "Location": "Mexico"
+    },
+    "Ecopoint: Antarctica": {
+        "Id": 30,
+        "Type": "Elimination",
+        "Location": "Antarctica"
+    },
+    "Necropolis": {
+        "Id": 31,
+        "Type": "Elimination",
+        "Location": "Iraq"
+    },
+    "Château Guillard": {
+        "Id": 32,
+        "Type": "Deathmatch",
+        "Location": "France"
+    },
+    "Kanezaka": {
+        "Id": 33,
+        "Type": "Deathmatch",
+        "Location": "Japan"
+    },
+    "Malevento": {
+        "Id": 34,
+        "Type": "Deathmatch",
+        "Location": "Italy"
+    },
+    "Petra": {
+        "Id": 35,
+        "Type": "Deathmatch",
+        "Location": "Jordan"
+    },
+    "Ayutthaya": {
+        "Id": 36,
+        "Type": "Capture the Flag",
+        "Location": "Thailand"
+    }
+}]

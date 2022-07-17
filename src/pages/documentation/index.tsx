@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { heroes } from "../../utils/heroes";
 
+import styles from "../../styles/Documentation.module.css"
 
 const DocumentPage:NextPage = () => {
 
@@ -16,50 +17,31 @@ const DocumentPage:NextPage = () => {
     return (
         <div>
             <Navbar />
-            <div className="DocsBody">
+            <div className={styles.DocsBody}>
 
-            <h1 className="TopHeader"> How to Use</h1>
-            <h2 className="TopHeader"> Base API Request: http://localhost:3000/api/v1/</h2>
-            <h2 className="TopHeader"> Requests </h2>
+            <h1 className={styles.TopHeader}> How to Use</h1>
+            <h2 className={styles.TopHeader}> Base API Request: http://localhost:3000/api/v1/</h2>
+            <h2 className={styles.TopHeader}> Requests </h2>
             <p> Requests should be made with the Accept: application/json header set. 
             Although you'll still receive a valid JSON response when this header is not set, any error messages will be formatted in HTML as you haven't explicity requested a JSON response. 
             Additionally, the API only supports GET requests all other methods will fail.
             </p>
 
-            <h2 className="TopHeader">Endpoints</h2>
+            <h2 className={styles.TopHeader}>Endpoints</h2>
             
             <ul>
-                <li className="EndpointsList">api/v1/hero/[hero_id]</li>
-                <li className="EndpointsList">api/v1/hero/[hero_id]/abilities</li>
+                <li className={styles.EndpointsList}>api/v1/hero/[hero_id]</li>
+                <li className={styles.EndpointsList}>api/v1/heroes </li>
             </ul>
 
             <GetRequestComponent name="api/v1/hero/[hero_id]" apiType="hero" />
+            <GetRequestComponent name="api/v1/heroes" apiType="list of heroes" />
+            <GetRequestComponent name="api/v1/maps" apiType="list of maps" />
+            <GetRequestComponent name="api/v1/map/[map_id]" apiType="list of maps" />
 
             <h3> Each Hero Id: </h3>
             {heroIndex}
 
-            <style>
-            {`
-            .DocumentationHeader:hover {
-              text-shadow: 0 0 5px yellow;
-              cursor: pointer;
-            }
-            .DocsBody {
-                background: linear-gradient(rgb(26, 109, 255) -0.42%, rgb(200, 34, 255) 100.42%);
-                color: #7DF9FF;
-                padding: 15px;
-            }
-            .TopHeader {
-                display: flex;
-                justify-content: flex-start;
-                flex-wrap: wrap;
-            }
-            .EndpointsList {
-                margin-bottom: 10px;
-                font-size: 18px
-            }
-            `}
-          </style>
             </div>
         </div>
     )
@@ -67,12 +49,13 @@ const DocumentPage:NextPage = () => {
 
 const GetRequestComponent = (props:any) => {
     const [ apiRoute, setApiRoute ] = useState<string | null>("");
-    const [ jsonData, setJsonData ] = useState() 
+    const [ jsonData, setJsonData ] = useState<JSON>({} as JSON) 
 
     const fetchTest = async() => {
         if(apiRoute){
             const result = await fetch(apiRoute)
             const data = await result.json();
+
             setJsonData(data);
             return data;
         }
@@ -90,32 +73,13 @@ const GetRequestComponent = (props:any) => {
             </input>
             <button
             onClick={fetchTest}
+            className={styles.fetchButton}
             >
                 Fetch Test
             </button>
-            <div className="jsonbackground">
-              <pre className="codeBlock"> {JSON.stringify(jsonData, null, 2)} </pre>
+            <div className={styles.jsonbackground}>
+              <pre className={styles.codeBlock}> {JSON.stringify(jsonData, null, 2)} </pre>
             </div>
-            <style>{`
-            .jsonbackground {
-                background: rgba(255, 255, 255, 0.2);
-                border-radius: 4px;
-                box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-                backdrop-filter: blur(5px);
-                border: 1px solid rgba(255, 255, 255, 0.3);
-                display: flex;
-                justify-content: center;
-                flex-wrap: wrap;
-                font-size: 90%;
-                height: 100%
-            }
-            .codeBlock {
-                display: block;
-                padding: 1rem 1.5rem;
-                white-space: pre;
-                overflow: hidden;
-            }
-            `}</style>
         </div>
     )
 }

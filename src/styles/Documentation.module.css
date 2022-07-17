@@ -1,0 +1,67 @@
+            .DocumentationHeader:hover {
+              text-shadow: 0 0 5px yellow;
+              cursor: pointer;
+            }
+            .DocsBody {
+                background: linear-gradient(rgb(26, 109, 255) -0.42%, rgb(200, 34, 255) 100.42%);
+                color: #7DF9FF;
+                padding: 15px;
+                font-size: 100%
+            }
+            .TopHeader {
+                display: flex;
+                justify-content: flex-start;
+                flex-wrap: wrap;
+            }
+            .EndpointsList {
+                margin-bottom: 10px;
+                font-size: 18px
+            }
+
+            .jsonbackground {
+                background: rgba(255, 255, 255, 0.2);
+                border-radius: 4px;
+                box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+                backdrop-filter: blur(5px);
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                font-size: 90%;
+                height: 100%
+            }
+            .codeBlock {
+                display: block;
+                padding: 1rem 1.5rem;
+                white-space: pre;
+                overflow: hidden;
+            }
+            .fetchButton {
+                background-color: #d1e2e2;
+                padding: 2px;
+                text-align: center;
+                border-radius: 10px;
+                border: 1px solid rgba(255, 255, 255, 1);
+            }
+            .fetchButton:hover {
+                text-shadow: 0 0 5px yellow;
+                cursor: pointer;
+            }
+
+            @media (max-width: 800) {
+                .DocsBody {
+                    font-size: 16px;
+                }
+            }
+
+            @media (max-width: 500px) {
+                .DocsBody {
+                    font-size: 12px;
+                }
+            }
+
+            @media (min-width: 1200px) {
+                .DocsBody {
+                    font-size: 24px;
+                }
+            }
