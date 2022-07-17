@@ -1,0 +1,28 @@
+.top {
+    display: flex;
+    flex-direction: column;
+    margin: -8px;
+  }
+
+.filler {
+    height: 50vh;
+    background-color: #2C3531;
+}
+
+.searchHeader {
+  background-color: #D9B08C;
+  color: #d1e8e2;
+  font-size: 30px; 
+  display: flex;
+  justify-content: center;  
+  padding: 2%;
+}
+
+.searchBody {
+  background-color: #d1e8e2;
+}
+
+.queryArea {
+  background-color: #d1e8e2;
+  display: flex;
+}

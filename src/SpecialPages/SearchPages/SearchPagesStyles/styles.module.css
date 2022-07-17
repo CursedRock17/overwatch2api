@@ -1,0 +1,95 @@
+.top {
+    display: flex;
+    flex-direction: column;
+    margin: -8px;
+  }
+
+.filler {
+    height: 25px;
+    background-color: #2C3531;
+}
+
+.searchHeader {
+  background-color: #D9B08C;
+  color: #d1e8e2;
+  font-size: 30px; 
+  display: flex;
+  justify-content: center;  
+  padding: 2%;
+}
+
+.searchBody {
+  background-color: #d1e8e2;
+}
+
+.queryArea {
+  background-color: #d1e8e2;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.subsectionSR{
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+}
+
+.subsectionSR p {
+  font-size: 14px;
+}
+
+.subsectionsrsub {
+  display: flex;
+  flex-direction: column;
+  margin: 5%;;
+}
+
+.submitButton{
+  background-color: #116466;
+  border-radius: 16px;
+  color: #d1e8e2;
+  font-size: 20px;
+  margin: 2%;
+}
+
+.submitButton:hover {
+  box-shadow: 0 0 5px #ffee10;
+  text-shadow: 0 0 5px #ffee10;
+  cursor: pointer;
+}
+
+.errorMessage {
+  text-align: center;
+  background: linear-gradient(90deg, rgba(253,29,29,1) 13%, rgba(252,176,69,1) 100%);
+  color: #d1e8e2;
+}
+
+@media (max-width: 600px) {
+  .subsectionSR p {
+    font-size: 12px;
+  }
+
+  .searchHeader {
+    font-size: 24px; 
+  }
+
+  .submitButton { 
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .subsectionSR p {
+    font-size: 18px;
+  }
+
+  .searchHeader {
+    font-size: 36px; 
+  }
+
+  .submitButton {
+    font-size: 24px;
+  }
+}
