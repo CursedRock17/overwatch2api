@@ -36,4 +36,4 @@ yarn-error.log*
 *.tsbuildinfo
 
 #FillARole without API
-/public
+public/*
