@@ -9,11 +9,11 @@ import { database } from "../../Firebase/FirebaseInit";
 import { collection, query, limit, getDocs, startAfter, orderBy } from "firebase/firestore";  
 import { useRouter } from "next/router";
 
-import { QueryType } from "../../Types/UserTypes";
+import { UserDetails } from "../../Types/UserTypes";
 
 const UserSearch = () => {
-
     const [finalList, setFinalList] = useState([]);
+    
     let temporaryList:any = [];
     const filterableArray:any = []
 
@@ -25,67 +25,67 @@ const UserSearch = () => {
                //It's messy because you can't map these out
          //------------------------------------>
          const dpsmin = searchParams.query.DPSMin
-         const dpsminFilter = (arr:QueryType) => {
+         const dpsminFilter = (arr:UserDetails) => {
             if(!dpsmin){
                return arr;
             }
-            else if(arr.DPSMin == Number(dpsmin)){
+            else if(arr.DPS && arr.DPS >= Number(dpsmin)){
                return arr;
             }
          }
 
          const dpsmax = searchParams.query.DPSMax
-         const dpsmaxFilter = (arr:QueryType) => {
+         const dpsmaxFilter = (arr:UserDetails) => {
             if(!dpsmax){
                return arr;
             }
-            else if(arr.DPSMax == Number(dpsmax)){
+            else if(arr.DPS && arr.DPS <= Number(dpsmax)){
                return arr;
             }
          }
 
          const tankmin = searchParams.query.TankMin
-         const tankminFilter = (arr:QueryType) => {
+         const tankminFilter = (arr:UserDetails) => {
             if(!tankmin){
                return arr;
             }
-            else if(arr.TankMin && arr.TankMin > Number(tankmin)){
+            else if(arr.Tank && arr.Tank >= Number(tankmin)){
                return arr;
             }
          }
 
          const tankmax = searchParams.query.TankMax
-         const tankmaxFilter = (arr:QueryType) => {
+         const tankmaxFilter = (arr:UserDetails) => {
             if(!tankmax){
                return arr;
             }
-            else if(arr.TankMax && arr.TankMax < Number(tankmax)){
+            else if(arr.Tank && arr.Tank <= Number(tankmax)){
                return arr;
             }
          }
 
          const supportmin = searchParams.query.SupportMin
-         const supportminFilter = (arr:QueryType) => {
+         const supportminFilter = (arr:UserDetails) => {
             if(!supportmin){
                return arr;
             }
-            else if(arr.SupportMin && arr.SupportMin > Number(tankmax)){
+            else if(arr.Support && arr.Support >= Number(supportmin)){
                return arr;
             }
          }
 
          const supportmax = searchParams.query.SupportMax
-         const supportmaxFilter = (arr:QueryType) => {
+         const supportmaxFilter = (arr:UserDetails) => {
             if(!supportmax){
                return arr;
             }
-            else if(arr.SupportMax && arr.SupportMax < Number(tankmax)){
+            else if(arr.Support && arr.Support <= Number(supportmax)){
                return arr;
             }
          }
 
          const online = searchParams.query.Online
-         const onlineFilter = (arr:QueryType) => {
+         const onlineFilter = (arr:UserDetails) => {
             if(online == null){
                return arr;
             }
@@ -95,7 +95,7 @@ const UserSearch = () => {
          }
 
          const microphone = searchParams.query.Microphone
-         const microphoneFilter = (arr:QueryType) => {
+         const microphoneFilter = (arr:UserDetails) => {
             if(microphone == null){
                return arr;
             }
@@ -105,7 +105,7 @@ const UserSearch = () => {
          }
 
          const region = searchParams.query.Region
-         const regionFilter = (arr:QueryType) => {
+         const regionFilter = (arr:UserDetails) => {
             if(!region) {
                return arr;
             }
@@ -115,7 +115,7 @@ const UserSearch = () => {
          }
 
          const playstyle = searchParams.query.Playstyle
-         const playstyleFilter = (arr:QueryType) => {
+         const playstyleFilter = (arr:UserDetails) => {
             if(!playstyle) {
                return arr;
             }
@@ -125,7 +125,7 @@ const UserSearch = () => {
          }
 
          const username = searchParams.query.Username
-         const usernameFilter = (arr:QueryType) => {
+         const usernameFilter = (arr:UserDetails) => {
             if(!username) {
                return arr;
             }
@@ -161,6 +161,7 @@ const UserSearch = () => {
          .filter(usernameFilter)
       )
         //End of tempList Loop
+
       }
 
       setFinalList(temporaryList)
@@ -178,6 +179,7 @@ const UserSearch = () => {
     </div>
  );
 }
+
 
 
 export default UserSearch;

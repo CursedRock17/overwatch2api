@@ -45,6 +45,7 @@ export const UsersList = (props:any) => {
     );
 
     const pageNumbers = [];
+
     for(let i = 1; i <= Math.ceil(props.finalList.length / perPage); i++) {
         pageNumbers.push(i)
         if (i == 20) i = Math.ceil(props.finalList.length / perPage)
@@ -79,6 +80,7 @@ export const UsersList = (props:any) => {
 
     return (
         <div>
+        {listedUsers.length > 0 ?
         <>
       <table className={styles.contentTable}>
          <thead>
@@ -99,14 +101,16 @@ export const UsersList = (props:any) => {
            {listedUsers}
         </tbody>
       </table> 
-     
       <div>
         <ul className={styles.pageNums}>
             {renderPageNums}
         </ul>
      </div> 
-
      </>
+
+     : 
+     <p className={styles.NoResults}> Please Refactor Search Filters</p>
+        }
     </div>
     )
 }
