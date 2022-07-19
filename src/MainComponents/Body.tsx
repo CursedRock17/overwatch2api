@@ -32,7 +32,7 @@ export const Body = () => {
         <Image src={DefeatScreen} className={styles.defImage}></Image>
         </div>
 
-        <Image src={BlizChars} className={styles.FullImage}></Image>
+        <Image src={BlizChars} layout="responsive" className={styles.FullImage}></Image>
         <h1 className={styles.BodyHeader}>
             Characters
         </h1>

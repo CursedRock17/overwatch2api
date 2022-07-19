@@ -43,7 +43,7 @@ export const Account = () => {
                     ?
             <div className={styles.mainSection}>
             <h1 className={styles.currentName}>
-                Current Account: {currentUser} 
+               Current Account: {currentUser}
             </h1>
             <div className={styles.changeName}>
             </div>

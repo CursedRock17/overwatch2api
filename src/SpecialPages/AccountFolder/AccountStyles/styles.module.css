@@ -223,9 +223,15 @@ font-size: 18px;
 .currentSet{
   color: #116466;
   padding-left: 20%;
+  font-size: 24px;
 }
 
-
+.top h1 {
+  font-size: 32px;
+}
+.mainAccountDetails h1 {
+  font-size: 32px;
+}
 
 @media (max-width: 600px) {
   .signOut {
@@ -240,7 +246,20 @@ font-size: 18px;
   .changeNameButton {
     font-size: 10px;
   }
+
+  .top h1 {
+    font-size: 16px;
+  }
+
+  .mainAccountDetails h1 {
+    font-size: 16px;
+  }
+
+  .currentSet{
+    font-size: 12px;
+  }
 }
+
 
 @media (min-width: 1200px) {
   .signOut {
@@ -254,5 +273,17 @@ font-size: 18px;
   }
   .changeNameButton {
     font-size: 14px;
+  }
+
+  .top h1 {
+    font-size: 48px;
+  }
+
+  .mainAccountDetails h1 {
+    font-size: 48px;
+  }
+
+  .currentSet {
+    font-size: 36px;
   }
 }

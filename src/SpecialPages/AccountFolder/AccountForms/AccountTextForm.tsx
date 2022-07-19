@@ -51,7 +51,7 @@ export const AccountTextForm = (props:any) => {
         }
     }
 
-    const updateProfileName = async(value:any) => {
+    const updateProfileName = async(value:string) => {
         if(auth.currentUser){
          await updateProfile(auth.currentUser, {
             displayName: value

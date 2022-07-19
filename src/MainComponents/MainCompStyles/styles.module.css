@@ -58,6 +58,10 @@
     background-color: #D4A59A;
 }
 
+.Body p {
+    font-size: 18px;
+}
+
 .Split {
     display: flex;
     justify-content: center;
@@ -196,6 +200,9 @@
     .Footer {
         font-size: 10px;
     }
+    .Body p {
+        font-size: 12px;
+    }
 }
 
 @media (min-width: 1200px) {
@@ -240,5 +247,8 @@
     }
     .Footer{
         font-size: 14px;
+    }
+    .Body p {
+        font-size: 24px;
     }
 }

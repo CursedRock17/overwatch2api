@@ -4,6 +4,7 @@ import { auth, database } from "../../Firebase/FirebaseInit";
 import { setDoc, arrayUnion, doc } from "firebase/firestore";
 
 import styles from "./Users.module.css"
+import usePaginateArray from "../../CustomHooks/usePaginateArray";
 
 //Going to pass much of what I have as props
 
@@ -14,10 +15,7 @@ export const UsersList = (props:any) => {
     const changePage = (event:any) => {
         setPageNum(Number(event.target.id))
     }
-
-    const indexOfLastDoc = pageNum * perPage;
-    const indexOfFirstDoc = indexOfLastDoc - perPage;
-    const currentUsers = props.finalList.slice(indexOfFirstDoc, indexOfLastDoc);
+    const currentUsers = usePaginateArray(pageNum, perPage, props.finalList)
 
     const listedUsers = currentUsers.map((item:any) =>
     <tr key={item.Id}>
@@ -107,7 +105,6 @@ export const UsersList = (props:any) => {
         </ul>
      </div> 
      </>
-
      : 
      <p className={styles.NoResults}> Please Refactor Search Filters</p>
         }

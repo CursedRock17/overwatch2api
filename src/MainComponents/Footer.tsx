@@ -12,7 +12,7 @@ export const Footer = () => {
             Fill A Role
         </h1>
         <a target="_blank" href="https://github.com/CursedRock17?tab=projects&type=beta" className={styles.FooterText}>
-            <Image src={GitIcon}></Image>
+            <Image width={50} src={GitIcon}></Image>
         </a>
         <h1>
             Policy Page
