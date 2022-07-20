@@ -13,7 +13,7 @@ export default (req:NextApiRequest, res:NextApiResponse) => {
           switch (method) {
             case 'GET':
               // Get data from your database
-              res.status(200).json({ mapJSON })
+              res.status(200).json( mapJSON )
               break
             default:
               res.setHeader('Allow', ['GET'])
