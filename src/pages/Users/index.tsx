@@ -139,8 +139,8 @@ const UserSearch:NextPage = () => {
 
       let startNum = 0;
       
-         while(temporaryList.length < 200 && startNum % 500 == 0){
-            const userQuery = query(userCollection, orderBy("Username"), limit(500), startAfter(startNum));
+         while(temporaryList.length < 200 && startNum % 5 == 0){
+            const userQuery = query(userCollection, orderBy("Username"), limit(5), startAfter(startNum));
    
             const userList = await getDocs(userQuery);
    

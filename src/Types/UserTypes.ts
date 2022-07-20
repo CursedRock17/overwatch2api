@@ -78,8 +78,12 @@ export type GroupType = {
     Playstyle?: string,
     Id?: string,
     Timestamp?: Date,
-    DPS?: number,
-    Tank?: number,
-    Support?: number,
-    Gamemode?: string
+    DPSOne?: string,
+    DPSTwo?: string,
+    TankOne?: string,
+    TankTwo?: string,
+    SupportOne?: string,
+    SupportTwo?: string,
+    Gamemode?: string,
+    UserId?: string
 }

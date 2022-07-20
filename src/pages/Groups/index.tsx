@@ -13,7 +13,7 @@ import CheckboxInput  from "../../SpecialPages/SearchPages/Checkbox"
 import { GroupType } from '../../Types/UserTypes';
 
 import { database, auth } from '../../Firebase/FirebaseInit';
-import { arrayUnion, arrayRemove, doc, getDoc, setDoc, updateDoc, FieldValue } from 'firebase/firestore';
+import { arrayUnion, arrayRemove, doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import { onAuthStateChanged, User } from 'firebase/auth'
 
 import { nanoid } from 'nanoid'
@@ -21,7 +21,7 @@ import { nanoid } from 'nanoid'
 
 const GroupPage:NextPage = () => {
     const [groupDetails, setGroupDetails] = useState<GroupType>({} as GroupType);
-    const [createDetails, setCreateDetails] = useState<GroupType>({Rank: "Bronze", Microphone:false, Region: "Unset", Playstyle: "Anything", Support: 0, Tank: 0, DPS: 0, Gamemode: "Quick Play" } as GroupType)
+    const [createDetails, setCreateDetails] = useState<GroupType>({Rank: "Bronze", Microphone:false, Region: "Unset", Playstyle: "Anything", SupportOne: "", SupportTwo:"", TankOne: "",  TankTwo: "", DPSOne: "", DPSTwo: "", Gamemode: "Quick Play" } as GroupType)
     const [currentUser, setCurrentUser] = useState<User>();
     const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
@@ -78,12 +78,16 @@ const GroupPage:NextPage = () => {
                     Playstyle: createDetails.Playstyle,
                     Timestamp: date,
                     Gamemode: createDetails.Gamemode,
-                    DPS: createDetails.DPS,
-                    Tank: createDetails.Tank,
-                    Support: createDetails.Support
+                    DPSOne: createDetails.DPSOne,
+                    DPSTwo: createDetails.DPSTwo,
+                    TankOne: createDetails.TankOne,
+                    TankTwo: createDetails.TankTwo,
+                    SupportOne: createDetails.SupportOne,
+                    SupportTwo: createDetails.SupportTwo,
+                    UserId: currentUser.uid
                 }
 
-                if(groupInfo.DPS == 1 || groupInfo.Tank == 1 || groupInfo.Support == 1){
+                if(groupInfo.DPSOne != "" || groupInfo.TankOne != "" || groupInfo.SupportOne != ""){
                     try {
                         await setDoc(usersGroups, {
                             Groups: arrayUnion(groupInfo)
@@ -114,13 +118,16 @@ const GroupPage:NextPage = () => {
             } as any)   
             }
     
-            else if(title == "DPS" || title == "Tank" || title == "Support"){
+            else if(title == "DPSOne" || title == "TankOne" || title == "SupportOne"){
                 setGroupDetails({
                     ...groupDetails,
-                    DPS: 0,
-                    Tank: 0,
-                    Support: 0,
-                    [title]: 1
+                    DPSOne: "",
+                    DPSTwo: "",
+                    TankOne: "",
+                    TankTwo: "",
+                    SupportOne: "",
+                    SupportTwo: "",
+                    [title]: currentUser?.displayName
                 } as any)  
             }
     
@@ -141,13 +148,16 @@ const GroupPage:NextPage = () => {
             } as any)   
             }
     
-            else if(title == "DPS" || title == "Tank" || title == "Support"){
+            else if(title == "DPSOne" || title == "TankOne" || title == "SupportOne"){
                 setCreateDetails({
                     ...createDetails,
-                    DPS: 0,
-                    Tank: 0,
-                    Support: 0,
-                    [title]: 1
+                    DPSOne: "",
+                    DPSTwo: "",
+                    TankOne: "",
+                    TankTwo: "",
+                    SupportOne: "",
+                    SupportTwo: "",
+                    [title]: currentUser?.displayName
                 } as any)  
             }
     
@@ -167,8 +177,7 @@ const GroupPage:NextPage = () => {
 
         for(const key in groupDetails){
             addedString = addedString + (`${key}=`) + groupDetails[key] + "&";
-            if(key == "DPS") canFilter = true;
-            console.log(key)
+            if(key == "DPSOne" || key == "TankOne" || key == "SupportOne") canFilter = true;
         }
 
         if(canFilter){
@@ -197,12 +206,12 @@ const GroupPage:NextPage = () => {
             :
             <></>
             }
-            <GroupFilters handleChange={(title:string, e:any) => handleFilter(title, e, "Create")} handleSubmit={handleSubmit}/>
+            <GroupFilters currentUser={currentUser} handleChange={(title:string, e:any) => handleFilter(title, e, "Create")} handleSubmit={handleSubmit}/>
 
             <div className={styles.searchHeader}>
                     Begin Search
             </div>
-            <GroupFilters handleChange={(title:string, e:any) => handleFilter(title, e, "Search")} handleSubmit={handleSearch}/>
+            <GroupFilters currentUser={currentUser} handleChange={(title:string, e:any) => handleFilter(title, e, "Search")} handleSubmit={handleSearch}/>
         <Footer />
         <div className={styles.filler}></div>
     </div>
@@ -213,7 +222,6 @@ const GroupPage:NextPage = () => {
 const GroupFilters = (props:any) => {
 
     //Adding the filters ontop of the base components, just a simple form
-
     return (
         <div className={styles.top}>
             <div className={styles.queryArea}>
@@ -233,23 +241,23 @@ const GroupFilters = (props:any) => {
                 <div className={styles.subsectionSR}>
                     <div className={styles.subsectionsrsub}>
                         <p> Your Role </p>
-                        <div onChange={(e:any) => props.handleChange(e.target.value, 1)}>
+                        <div onChange={(e:any) => props.handleChange(e.target.value, props.currentUser?.displayName)}>
                         DPS
                         <input
                         type="radio"
-                        value="DPS"
+                        value="DPSOne"
                         name="role"
                         />
                         Tank
                         <input
                         type="radio"
-                        value="Tank"
+                        value="TankOne"
                         name="role"
                         />
                         Support
                         <input
                         type="radio"
-                        value="Support"
+                        value="SupportOne"
                         name="role"
                         />
                         </div>
@@ -349,13 +357,16 @@ forEach loop shouldn't be a problem because there should only be three items int
             </div>
             <div className={styles.subsectionSR}>
                     <div className={styles.subsectionsrsub}>
-                        <p> DPS: {group.DPS} / 2 </p>
+                        <p> DPS: {group.DPSOne}  </p>
+                        <p> DPS: {group.DPSTwo}  </p>
                     </div>
                     <div className={styles.subsectionsrsub}>
-                        <p> Tank: {group.Tank} / 2 </p>
+                        <p> Tank: {group.TankOne} </p>
+                        <p> Tank: {group.TankTwo} </p>
                     </div>
                     <div className={styles.subsectionsrsub}>
-                        <p> Support: {group.Support} / 2 </p>
+                        <p> Support: {group.SupportOne}</p>
+                        <p> Support: {group.SupportTwo}</p>
                     </div>
             </div>
             <div className={styles.subsectionSR}>

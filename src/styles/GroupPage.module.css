@@ -39,14 +39,14 @@ text-align: center;
 justify-content: center;
 }
 
-.subsectionSR p {
+.SR p {
 font-size: 14px;
 }
 
 .subsectionsrsub {
 display: flex;
 flex-direction: column;
-margin: 5%;;
+margin: 5%;
 }
 
 .submitButton{
@@ -102,6 +102,39 @@ color: #d1e8e2;
   box-shadow: none;
   transform: translateY(5px);
 }
+
+
+.pageNums {
+  user-select: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.pagesList {
+  list-style: none;
+}
+
+.pageButton {
+  background-color: #116466;
+  color: #d1e8e2;
+  margin: 10px;
+  width: 10px;
+  font-size: 12px;
+  padding: 8px;
+  border-radius: 5px;
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+}
+
+.pageButton:hover {
+  box-shadow: 0 0 8px #d64b6c;
+  box-shadow: 0 0 8px #d64b6c;
+  cursor: pointer;
+}
+
+
 
 @media (max-width: 600px) {
 .subsectionSR p {
