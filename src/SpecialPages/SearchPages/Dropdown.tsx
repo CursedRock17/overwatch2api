@@ -43,6 +43,7 @@ export const DropdownInputRank = (props:any) => {
         title="Rank"
         onChange={(e) => props.change(e.target.value)} 
         >
+        <option value="Unset">Unset</option>
         <option value="Bronze">Bronze</option>
         <option value="Silver">Silver</option>
         <option value="Gold">Gold</option>
@@ -61,6 +62,7 @@ export const DropdownInputGamemode = (props:any) => {
         title="Gamemode"
         onChange={(e) => props.change(e.target.value)} 
         >
+        <option value="Any Mode">Any Mode</option>
         <option value="Quick Play">Quick Play</option>
         <option value="Competitive">Competitive</option>
     </select>

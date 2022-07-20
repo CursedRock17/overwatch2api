@@ -140,18 +140,11 @@
    background-color: #116466;
    color: #d1e8e2;
    margin: 10px;
-   width: 20px;
+   width: 10px;
    font-size: 12px;
    padding: 8px;
    border-radius: 5px;
    list-style-type: none;
-   display: flex;
-   justify-content: center;
-}
-
-.NoResults {
-   font-size: 18px;
-   padding: 10px;
    display: flex;
    justify-content: center;
 }
@@ -169,11 +162,6 @@
    .Loading {
       font-size: 48px;
    }
-
-   .NoResults {
-      font-size: 24px;
-   }
-
    .pageButton {
       width: 20px;
       font-size: 15px;
@@ -183,10 +171,6 @@
 @media (max-width: 800px) {
    .contentTable{
       font-size: 12px;
-   }
-
-   .NoResults {
-      font-size: 14px;
    }
    
    .Loading {
@@ -207,11 +191,6 @@
    .Loading {
       font-size: 14px;
    }
-
-   .NoResults {
-      font-size: 10px;
-   }
-
    .pageButton {
       width: 10px;
       font-size: 6px;

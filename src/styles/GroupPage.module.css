@@ -84,7 +84,23 @@ color: #d1e8e2;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.3);
+  padding-left: 8px;
+  padding-right: 18px;
+}
 
+.deleteField {
+  background-color: rgba(82, 0, 0, 0.885);
+  color: #d1e8e2;
+  border-radius: 10px;
+  width: 150%;
+  box-shadow: 0 5px 0 rgba(63, 0, 0, 0.885);
+}
+
+.deleteField:active {
+  cursor: pointer;
+  text-shadow: 0 0 5px #ffee10;
+  box-shadow: none;
+  transform: translateY(5px);
 }
 
 @media (max-width: 600px) {

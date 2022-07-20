@@ -13,33 +13,51 @@ import CheckboxInput  from "../../SpecialPages/SearchPages/Checkbox"
 import { GroupType } from '../../Types/UserTypes';
 
 import { database, auth } from '../../Firebase/FirebaseInit';
-import { arrayUnion, arrayRemove, doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
+import { arrayUnion, arrayRemove, doc, getDoc, setDoc, updateDoc, FieldValue } from 'firebase/firestore';
+import { onAuthStateChanged, User } from 'firebase/auth'
 
 import { nanoid } from 'nanoid'
+
 
 const GroupPage:NextPage = () => {
     const [groupDetails, setGroupDetails] = useState<GroupType>({} as GroupType);
     const [createDetails, setCreateDetails] = useState<GroupType>({Rank: "Bronze", Microphone:false, Region: "Unset", Playstyle: "Anything", Support: 0, Tank: 0, DPS: 0, Gamemode: "Quick Play" } as GroupType)
+    const [currentUser, setCurrentUser] = useState<User>();
+    const [errorMessage, setErrorMessage] = useState<string | null>(null)
+
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user && !currentUser) {
+                setCurrentUser(user);
+            }
+          });
+    }, [])
 
     const navigate = useRouter();
 
     const removeField = async(index:number, collectionRef:any) => {
-        await updateDoc(collectionRef, {
-            Groups: arrayRemove(index)
-        })
+
+        const GroupsArray = await getDoc(collectionRef);
+
+        if(GroupsArray.exists()){
+            const currentGroup = GroupsArray.data().Groups[index]
+
+            await updateDoc(collectionRef, {
+                Groups: arrayRemove(currentGroup)
+            }, {merge: true})
+        }
+
+        navigate.push("/")
+
     }
 
     const handleSubmit = async() =>{
-        const currentUser = auth.currentUser
-
         if(currentUser){
             const usersGroups = doc(database, "fillAUser", currentUser.uid)
             const date = new Date();
 
             const groupRef = getDoc(usersGroups);
             const userGroupDates = (await groupRef).data()?.Groups
-
-            console.log(userGroupDates)
 
             userGroupDates.forEach((oldDate:any, index:number) => {
                 const secondsBetween = Math.round(date.getTime() / 1000) - oldDate?.Timestamp.seconds;
@@ -65,18 +83,19 @@ const GroupPage:NextPage = () => {
                     Support: createDetails.Support
                 }
 
-                console.log(groupInfo)
-    
-                try {
-                    await setDoc(usersGroups, {
-                        Groups: arrayUnion(groupInfo)
-                    }, {merge: true})
-                } catch (error){}
-        
+                if(groupInfo.DPS == 1 || groupInfo.Tank == 1 || groupInfo.Support == 1){
+                    try {
+                        await setDoc(usersGroups, {
+                            Groups: arrayUnion(groupInfo)
+                        }, {merge: true})
+                        navigate.push("/")
+                    } catch (error){}
+                } else {
+                    setErrorMessage("Must Select a Role")
+                }
             }
         }
 
-        navigate.push("/")
     }   
 
 
@@ -86,41 +105,77 @@ const GroupPage:NextPage = () => {
         //Just took some Regex from StackOverflow
         title = title.replace(/\s/g, '');
 
-        if(title == "Microphone")
-        {
-        setGroupDetails({
-            ...groupDetails,
-            [title]: !groupDetails?.[title]
-        } as any)   
-        }
-
-        else if(title == "DPS" || title == "Tank" || title == "Support" && type == "Create"){
+        if(type == "Search"){
+            if(title == "Microphone")
+            {
+            setGroupDetails({
+                ...groupDetails,
+                [title]: !groupDetails?.[title]
+            } as any)   
+            }
+    
+            else if(title == "DPS" || title == "Tank" || title == "Support"){
+                setGroupDetails({
+                    ...groupDetails,
+                    DPS: 0,
+                    Tank: 0,
+                    Support: 0,
+                    [title]: 1
+                } as any)  
+            }
+    
+            else {
+            setGroupDetails({
+                ...groupDetails,
+                [title]: e
+            } as any)
+          }
+        } 
+        
+        else {
+            if(title == "Microphone")
+            {
             setCreateDetails({
                 ...createDetails,
-                DPS: 0,
-                Tank: 0,
-                Support: 0,
-                [title]: 1
-            } as any)  
-        }
-
-        else {
-        setGroupDetails({
-            ...groupDetails,
-            [title]: e
-        } as any)
-      }
+                [title]: !createDetails?.[title]
+            } as any)   
+            }
+    
+            else if(title == "DPS" || title == "Tank" || title == "Support"){
+                setCreateDetails({
+                    ...createDetails,
+                    DPS: 0,
+                    Tank: 0,
+                    Support: 0,
+                    [title]: 1
+                } as any)  
+            }
+    
+            else {
+            setCreateDetails({
+                ...createDetails,
+                [title]: e
+            } as any)
+          }
+        } 
     }
 
     const handleSearch = () => {
         //Begin the query of groups following the search logic
         let addedString:string = "Groups/GroupResults?"
-    
+        let canFilter = false;
+
         for(const key in groupDetails){
             addedString = addedString + (`${key}=`) + groupDetails[key] + "&";
+            if(key == "DPS") canFilter = true;
+            console.log(key)
         }
 
-        navigate.push(addedString)
+        if(canFilter){
+            navigate.push(addedString)
+        } else {
+            setErrorMessage("Must Select a Role")
+        }
 
     }
 
@@ -128,10 +183,20 @@ const GroupPage:NextPage = () => {
 
     <div className={styles.top}>
         <Navbar />
-            <CurrentGroups />
+            <CurrentGroups currentUser={currentUser} deleteField={removeField}/>
             <div className={styles.searchHeader}>
                 Create a Group
             </div>
+            {
+            errorMessage ? 
+            <div className={styles.errorMessage}>
+                <div className={styles.subsectionSR}>
+                   <p> {errorMessage} </p> 
+                </div>
+            </div>
+            :
+            <></>
+            }
             <GroupFilters handleChange={(title:string, e:any) => handleFilter(title, e, "Create")} handleSubmit={handleSubmit}/>
 
             <div className={styles.searchHeader}>
@@ -145,7 +210,7 @@ const GroupPage:NextPage = () => {
 }
 
 
-const GroupFilters= (props:any) => {
+const GroupFilters = (props:any) => {
 
     //Adding the filters ontop of the base components, just a simple form
 
@@ -228,9 +293,10 @@ const GroupFilters= (props:any) => {
     )
 }
 
-const CurrentGroups = () => {
-    const currentUser = auth.currentUser;
+const CurrentGroups = (props:any) => {
     const [listedGroups, setListedGroups] = useState<Array<GroupType>>([]);
+
+    
 
     /*
 Need to simple fetch te gorups under our current user so that they can be displayed
@@ -239,15 +305,15 @@ forEach loop shouldn't be a problem because there should only be three items int
     */
 
     const fetchGroups = async() => {
-        if(currentUser){
-            const usersGroups = doc(database, "fillAUser", currentUser.uid)
+        if(props.currentUser){
+            const usersGroups = doc(database, "fillAUser", props.currentUser.uid)
             const groupRef = await getDoc(usersGroups);
 
             if(groupRef.exists()){
                 groupRef.data()?.Groups.forEach((group:GroupType) => {
                     setListedGroups(oldArray => [
-                        group,
-                        ...oldArray
+                        ...oldArray,
+                        group
                     ])
                 })
             }
@@ -256,12 +322,52 @@ forEach loop shouldn't be a problem because there should only be three items int
 
     useEffect(() => {
         fetchGroups()
-    }, [])
+    }, [props.currentUser])
 
 
-    const personalMappedGroups = Object.keys(listedGroups).map((group) =>
-        <ul className={styles.groupStyle}>
-            {group}
+    const personalMappedGroups = listedGroups.map((group:GroupType, index:number) =>
+        <ul key={index} className={styles.groupStyle}>
+            <div className={styles.subsectionSR}>
+                    <div className={styles.subsectionsrsub}>
+                        <p> Gamemode: {group.Gamemode} </p>
+                    </div>
+                    <div className={styles.subsectionsrsub}>
+                        <p> Playstyle: {group.Playstyle}</p>
+                    </div>
+                    <div className={styles.subsectionsrsub}>
+                        <p> Rank: {group.Rank}</p>
+                    </div>
+            </div>
+
+            <div className={styles.subsectionSR}>
+                    <div className={styles.subsectionsrsub}>
+                        <p> Region: {group.Region} </p>
+                    </div>
+                    <div className={styles.subsectionsrsub}>
+                        <p> Microphone: {String(group.Microphone)}</p>
+                    </div>
+            </div>
+            <div className={styles.subsectionSR}>
+                    <div className={styles.subsectionsrsub}>
+                        <p> DPS: {group.DPS} / 2 </p>
+                    </div>
+                    <div className={styles.subsectionsrsub}>
+                        <p> Tank: {group.Tank} / 2 </p>
+                    </div>
+                    <div className={styles.subsectionsrsub}>
+                        <p> Support: {group.Support} / 2 </p>
+                    </div>
+            </div>
+            <div className={styles.subsectionSR}>
+                    <div className={styles.subsectionsrsub}>
+                        <button
+                        onClick={() => props.deleteField(index, doc(database, "fillAUser", props.currentUser.uid))}
+                        className={styles.deleteField}
+                        >
+                        <p> Delete </p>
+                        </button>
+                    </div>
+            </div>
         </ul>
     )
 

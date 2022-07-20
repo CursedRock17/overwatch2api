@@ -1,20 +1,23 @@
 import { useState } from "react";
+import { NextPage } from "next";
 
-import { auth, database } from "../../Firebase/FirebaseInit";
+import { auth, database } from "../../../Firebase/FirebaseInit";
 import { setDoc, arrayUnion, doc } from "firebase/firestore";
 
-import styles from "./Users.module.css"
-import usePaginateArray from "../../CustomHooks/usePaginateArray";
+import styles from "../../../styles/Users.module.css"
+
+import usePaginateArray from "../../../CustomHooks/usePaginateArray";
 
 //Going to pass much of what I have as props
 
-export const UsersList = (props:any) => {
+export const UsersList:NextPage = (props:any) => {
     const [pageNum, setPageNum] = useState<number>(1);
-    const perPage = 3;
+    const perPage = 2;
 
     const changePage = (event:any) => {
         setPageNum(Number(event.target.id))
     }
+
     const currentUsers = usePaginateArray(pageNum, perPage, props.finalList)
 
     const listedUsers = currentUsers.map((item:any) =>
@@ -43,7 +46,6 @@ export const UsersList = (props:any) => {
     );
 
     const pageNumbers = [];
-
     for(let i = 1; i <= Math.ceil(props.finalList.length / perPage); i++) {
         pageNumbers.push(i)
         if (i == 20) i = Math.ceil(props.finalList.length / perPage)
@@ -78,7 +80,6 @@ export const UsersList = (props:any) => {
 
     return (
         <div>
-        {listedUsers.length > 0 ?
         <>
       <table className={styles.contentTable}>
          <thead>
@@ -99,15 +100,14 @@ export const UsersList = (props:any) => {
            {listedUsers}
         </tbody>
       </table> 
+     
       <div>
         <ul className={styles.pageNums}>
             {renderPageNums}
         </ul>
      </div> 
+
      </>
-     : 
-     <p className={styles.NoResults}> Please Refactor Search Filters</p>
-        }
     </div>
     )
 }

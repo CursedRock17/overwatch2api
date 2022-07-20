@@ -38,7 +38,7 @@ export const LoginButton = (props:any) => {
     
     }
     
-    const SignUp = async(email: string | null, password: string, confirm: string) => {
+    const SignUp = async(email: string, password: string, confirm: string) => {
     
         if(password != null || email != null){
             if(password.length < 8 || password.length > 25){
@@ -55,11 +55,10 @@ export const LoginButton = (props:any) => {
     
     
         await createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
+      .then(() => {
         // Signed in 
         props.setErrors("Clear");
         createRandomUser();
-        setId();
 
         //Todo: Change to real domain
         navigate.push("/Account")
@@ -96,20 +95,9 @@ export const LoginButton = (props:any) => {
             try {
                 await setDoc(doc(database, "fillAUser", user.uid), {
                   Username: random, 
-                }, {merge: true});
-            } catch (e) {
-                console.log("Error is: ", e)
-            }
-        }
-    }
-
-    const setId = async() => {
-        const user = auth.currentUser
-
-        if(user){
-            try {
-                await setDoc(doc(database, "fillAUser", user.uid), {
                   Id: user.uid, 
+                  Invites: [],
+                  Groups: [],
                 }, {merge: true});
             } catch (e) {
                 console.log("Error is: ", e)
