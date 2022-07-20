@@ -7,6 +7,7 @@ import { setDoc, arrayUnion, doc } from "firebase/firestore";
 import styles from "../../../styles/Users.module.css"
 
 import usePaginateArray from "../../../CustomHooks/usePaginateArray";
+import usePages from "../../../CustomHooks/usePages";
 
 //Going to pass much of what I have as props
 
@@ -45,23 +46,30 @@ export const UsersList:NextPage = (props:any) => {
     </tr>
     );
 
-    const pageNumbers = [];
-    for(let i = 1; i <= Math.ceil(props.finalList.length / perPage); i++) {
-        pageNumbers.push(i)
-        if (i == 20) i = Math.ceil(props.finalList.length / perPage)
-    }
+    const pageNumbers = usePages(
+        pageNum,
+        25,
+        perPage
+    );
 
-    const renderPageNums = pageNumbers.map((pageNum:number) => 
+    const renderPageNums = pageNumbers.map((pageNum:number | string, index:number) => 
         <li
-        key={pageNum}
+        key={index}
         id={String(pageNum)}
-        onClick={changePage}
-        className={styles.pageButton}
+        className={styles.pagesList}
         >
-        {pageNum}
+            <button
+            key={index}
+            id={String(pageNum)}
+            onClick={changePage}
+            className={styles.pageButton}
+            disabled={pageNum === "..." ? true : false}
+            >
+                {pageNum}
+            </button>
         </li>
     )
-
+    
     const handleInvite = async(rec:string, e:any) => {
         e.preventDefault();
         const sender = auth.currentUser

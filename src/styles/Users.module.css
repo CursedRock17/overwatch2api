@@ -47,6 +47,10 @@
    font-weight: bold;
    color: #116466;
  }
+
+ .pagesList {
+   list-style: none;
+ }
  
  .container{
     width: 720px;

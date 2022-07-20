@@ -166,13 +166,11 @@ const UserSearch:NextPage = () => {
    
          }
 
-         console.log(temporaryList.length, finalList.length)
          if(temporaryList.length != finalList.length) setFinalList(temporaryList)
    }
 
     useEffect(() => {
         setList();
-        console.log("Render")
     }, [])
 
  return (
