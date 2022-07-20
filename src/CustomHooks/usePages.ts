@@ -18,23 +18,29 @@ const usePages = (currentPage:number , totalCount:number , pageSize:number ) => 
   */
 
     
-  const firstPage = 1;
-  const lastPage = Math.ceil(totalCount / pageSize);
-  const pageDifference = lastPage - firstPage
 
   const temporaryPaginate:Array<any> = [];
 
   useEffect(() => {
+
+    const firstPage = 1;
+    const lastPage = Math.ceil(totalCount / pageSize);
+    const pageDifference = lastPage - firstPage
 
     if(firstPage == lastPage){
       setPagination([1]);
     }
 
     else if(pageDifference < 4){
-      for(let i = 0; i < pageDifference; i++){
+      for(let i = 1; i <= pageDifference + 1; i++){
         temporaryPaginate.push(i);
+        if(pagination.length == 0){
+          setPagination(oldArray => [
+            ...oldArray,
+            i
+          ])
+        }
       }
-      setPagination([temporaryPaginate])
     }
 
     else if(pageDifference == 5){
@@ -59,7 +65,7 @@ const usePages = (currentPage:number , totalCount:number , pageSize:number ) => 
     else {
       setPagination([ firstPage, DOTS, currentPage - 1, currentPage, currentPage + 1, DOTS, lastPage])
     }
-  }, [currentPage])
+  }, [currentPage, totalCount])
 
   return pagination;
 }

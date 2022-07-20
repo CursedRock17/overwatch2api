@@ -48,7 +48,7 @@ export const UsersList:NextPage = (props:any) => {
 
     const pageNumbers = usePages(
         pageNum,
-        25,
+        props.finalList.length,
         perPage
     );
 
