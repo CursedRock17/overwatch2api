@@ -80,9 +80,7 @@ export const UsersList:NextPage = (props:any) => {
             await setDoc(doc(database, "fillAUser", rec), {
              Invites: arrayUnion(sender?.displayName + " Wants to play on: " + date)
           }, {merge: true})
-        } catch(error) {
-          console.log(error)
-          }
+        } catch(error) {}
         }
     }
 

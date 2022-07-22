@@ -21,9 +21,7 @@ export const HeroSelect = () => {
             if(docRef.exists()){
                 setCurrentSetting(docRef.data()?.Heroes)
             }
-            else {
-                console.log("Doesnt exist")
-            }
+            else {}
         }
     }
 

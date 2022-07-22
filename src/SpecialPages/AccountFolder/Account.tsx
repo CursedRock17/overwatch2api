@@ -31,9 +31,7 @@ export const Account = () => {
         signOut(auth).then(() => {
             // Sign-out successful.
             setSignedIn(false);
-          }).catch((error) => {
-            // An error happened.
-          });
+          })
       }
       
     return (

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 const usePages = (currentPage:number , totalCount:number , pageSize:number ) => {
 
-  const [pagination, setPagination] = useState<Array<any>>([]);
+  const [pagination, setPagination] = useState<Array<number | string>>([]);
 
   /*
     When creating the hook I wanted to make sure that
@@ -18,9 +18,6 @@ const usePages = (currentPage:number , totalCount:number , pageSize:number ) => 
   */
 
     
-
-  const temporaryPaginate:Array<any> = [];
-
   useEffect(() => {
 
     const firstPage = 1;
@@ -30,11 +27,10 @@ const usePages = (currentPage:number , totalCount:number , pageSize:number ) => 
     if(firstPage == lastPage){
       setPagination([1]);
     }
-
+    
     else if(pageDifference < 4){
-      for(let i = 1; i <= pageDifference + 1; i++){
-        temporaryPaginate.push(i);
-        if(pagination.length == 0){
+      for(let i = 2; i <= pageDifference + 1; i++){
+        if(pagination.length == 1){
           setPagination(oldArray => [
             ...oldArray,
             i

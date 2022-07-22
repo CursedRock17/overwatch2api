@@ -14,9 +14,6 @@ export const Footer = () => {
         <a target="_blank" href="https://github.com/CursedRock17?tab=projects&type=beta" className={styles.FooterText}>
             <Image width={50} src={GitIcon}></Image>
         </a>
-        <h1>
-            Policy Page
-        </h1>
     </div>
     )
 }

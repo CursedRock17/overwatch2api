@@ -137,18 +137,26 @@ const UserSearch:NextPage = () => {
          }
          //------------------------------------>  
 
-      let startNum = 0;
-      
-         while(temporaryList.length < 200 && startNum % 5 == 0){
-            const userQuery = query(userCollection, orderBy("Username"), limit(5), startAfter(startNum));
+         const recurList = async(name:string) => {
+            //This will be the same funciton as in groups to quote that comment: 
+         /*
+         RecurList is a recursive function that will allow us to keep quries to a minimum as it will go
+         through all the people and check their groups, from there we do queries in batches of 5 starting after
+         the last Username we had found. It needs a default of the Bobthedog who must remain there in order to get it 
+         to funciton, then we just add these things to the filter. It will limit the amount of queries we have to do
+         */
+         const userQuery = query(userCollection, orderBy("Username"), limit(5), startAfter(name));
+         const userList = await getDocs(userQuery);
    
-            const userList = await getDocs(userQuery);
-   
-           userList.forEach((doc) => {
-              filterableArray.push(doc.data());
-              startNum++;
-           })
-     
+         let newName = name;
+
+         if(userList.size == 0) return temporaryList
+
+         userList.forEach((doc) => {
+            filterableArray.push(doc.data());
+            newName = doc.data().Username
+         })
+
          temporaryList = temporaryList.concat(filterableArray
             .filter(dpsminFilter)
             .filter(dpsmaxFilter)
@@ -162,11 +170,14 @@ const UserSearch:NextPage = () => {
             .filter(playstyleFilter)
             .filter(usernameFilter)
          )
-           //End of tempList Loop
-   
-         }
+         
+         if(temporaryList.length < 200) recurList(newName)
 
-         if(temporaryList.length != finalList.length) setFinalList(temporaryList)
+         return temporaryList
+         }
+   
+         const insertList = await recurList("Bobthedog")
+         setFinalList(insertList)
    }
 
     useEffect(() => {

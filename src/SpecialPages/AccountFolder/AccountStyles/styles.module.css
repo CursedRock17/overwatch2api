@@ -63,6 +63,11 @@
   font-size: 20px;  
 }
 
+.signOut:hover {
+  text-shadow: 3px 1px 5px #ffee10;
+  cursor: pointer;
+}
+
 .signOutDiv{
   display: flex;
   justify-content: center;
@@ -150,6 +155,11 @@
   border-radius: 10px;
   width: 50%;
   box-shadow: 1px 1px rgb(232, 230, 230);
+}
+
+.updateProfile:hover {
+  text-shadow: 3px 1px 5px #ffee10;
+  cursor: pointer; 
 }
 
 .portrait {

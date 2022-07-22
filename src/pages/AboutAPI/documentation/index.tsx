@@ -57,7 +57,6 @@ const GetRequestComponent = (props:any) => {
 
     const fetchTest = async() => {
         if(apiRoute){
-            console.log(apiRoute)
             const result = await fetch(apiRoute)
             const data = await result.json();
 
