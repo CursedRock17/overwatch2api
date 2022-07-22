@@ -3,10 +3,10 @@
       cursor: pointer;
     }
     .MainBody {
+      color: black;
       margin-bottom: 0px;
       background: radial-gradient(rgb(26, 109, 255) -0.42%, rgb(200, 34, 255) 100.42%);
-      height: 1100px;
-      color: #7DF9FF;
+      height: 1100px
     } 
     
     .headerFont {

@@ -103,8 +103,8 @@ export const Search = () => {
             navigate.push(addedString)
         }
     }
-
     return (
+
         <div className={styles.top}>
             <Navbar />
             <div className={styles.searchHeader}>
@@ -126,18 +126,18 @@ export const Search = () => {
                 <div className={styles.subsectionSR}>
                     <div className={styles.subsectionsrsub}>
                     <p> DPS SR Between: </p>
-                    <TextInput type="number" name="DPS Min" change={(e:number) => handleChange("DPS Min" ,e)} />
-                    <TextInput type="number" name="DPS Max" change={(e:number) => handleChange("DPS Max" , e)} />
+                    <TextInput type="number" name="DPS Min" change={(e:any) => handleChange("DPS Min" ,e)} />
+                    <TextInput type="number" name="DPS Max" change={(e:any) => handleChange("DPS Max" , e)} />
                     </div>
                     <div className={styles.subsectionsrsub}>
                     <p> Tank SR Between: </p>
-                    <TextInput type="number" name="Tank Min" change={(e:number) => handleChange("Tank Min" ,e)} />
-                    <TextInput type="number" name="Tank Max" change={(e:number) => handleChange("Tank Max" , e)} />
+                    <TextInput type="number" name="Tank Min" change={(e:any) => handleChange("Tank Min" ,e)} />
+                    <TextInput type="number" name="Tank Max" change={(e:any) => handleChange("Tank Max" , e)} />
                     </div>
                     <div className={styles.subsectionsrsub}>
                     <p> Support SR Between: </p>
-                    <TextInput type="number" name="Support Min" change={(e:number) => handleChange("Support Min" , e)} />
-                    <TextInput type="number" name="Support Max" change={(e:number) => handleChange("Support Max" , e)} />
+                    <TextInput type="number" name="Support Min" change={(e:any) => handleChange("Support Min" , e)} />
+                    <TextInput type="number" name="Support Max" change={(e:any) => handleChange("Support Max" , e)} />
                     </div>
                 </div>
 
@@ -145,7 +145,7 @@ export const Search = () => {
                 <div className={styles.subsectionSR}>
                     <div className={styles.subsectionsrsub}>
                         <p> Username: </p>
-                        <TextInput type="text" name="Username" change={(e:string) => handleChange("Username" , e)} />
+                        <TextInput type="text" name="Username" change={(e:any) => handleChange("Username" , e)} />
                     </div>
                 </div>
                 

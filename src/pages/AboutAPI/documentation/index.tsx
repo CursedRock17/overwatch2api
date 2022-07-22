@@ -30,18 +30,16 @@ const DocumentPage:NextPage = () => {
             <h2 className={styles.TopHeader}>Endpoints</h2> 
             
             <ul>
-                <li className={styles.EndpointsList}>/api/v1/hero/[hero_id]</li>
-                <li className={styles.EndpointsList}>/api/v1/heroes </li> 
-                <li className={styles.EndpointsList}>/api/v1/maps </li>
-                <li className={styles.EndpointsList}>/api/v1/map/[map_id] </li>
-                <li className={styles.EndpointsList}>/api/v1/ranks </li>
+                <li className={styles.EndpointsList}>api/v1/hero/[hero_id]</li>
+                <li className={styles.EndpointsList}>api/v1/heroes </li> 
+                <li className={styles.EndpointsList}>api/v1/maps </li>
+                <li className={styles.EndpointsList}>api/v1/map/[map_id] </li>
             </ul>
 
-            <GetRequestComponent name="/api/v1/hero/[hero_id]" apiType="hero" />
-            <GetRequestComponent name="/api/v1/heroes" apiType="list of heroes" />
-            <GetRequestComponent name="/api/v1/maps" apiType="list of maps" />
-            <GetRequestComponent name="/api/v1/map/[map_id]" apiType="list of maps" />
-            <GetRequestComponent name="/api/v1/ranks" apiType="list of ranks" />
+            <GetRequestComponent name="api/v1/hero/[hero_id]" apiType="hero" />
+            <GetRequestComponent name="api/v1/heroes" apiType="list of heroes" />
+            <GetRequestComponent name="api/v1/maps" apiType="list of maps" />
+            <GetRequestComponent name="api/v1/map/[map_id]" apiType="list of maps" />
 
             <h3> Each Hero Id: </h3>
             {heroIndex}

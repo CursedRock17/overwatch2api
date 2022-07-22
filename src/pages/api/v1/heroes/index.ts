@@ -5,7 +5,7 @@ import { heroes } from "../../../../utils/heroes";
 export default (req:NextApiRequest, res:NextApiResponse) => {
 
         const {method} = req
-        const heroesList:Array<string> = [];
+        const heroesList:any = [];
 
         switch(method){
             case "GET":
