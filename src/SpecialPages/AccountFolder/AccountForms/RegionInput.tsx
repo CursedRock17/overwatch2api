@@ -19,9 +19,7 @@ export const RegionInput = () => {
             if(docRef.exists()){
                 setCurrentSetting(docRef.data()?.Region)
             }
-            else {
-                console.log("Doesnt exist")
-            }
+            else {}
         }
     }
 

@@ -70,3 +70,20 @@ export type QueryType = {
     Playstyle?: string,
     Username?: string
 }
+
+export type GroupType = {
+    Rank?: string,
+    Microphone?: boolean,
+    Region?: string,
+    Playstyle?: string,
+    Id?: string,
+    Timestamp?: Date,
+    DPSOne?: string,
+    DPSTwo?: string,
+    TankOne?: string,
+    TankTwo?: string,
+    SupportOne?: string,
+    SupportTwo?: string,
+    Gamemode?: string,
+    UserId?: string
+}

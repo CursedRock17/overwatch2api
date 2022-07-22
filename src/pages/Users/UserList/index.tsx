@@ -1,23 +1,25 @@
 import { useState } from "react";
+import { NextPage } from "next";
 
-import { auth, database } from "../../Firebase/FirebaseInit";
+import { auth, database } from "../../../Firebase/FirebaseInit";
 import { setDoc, arrayUnion, doc } from "firebase/firestore";
 
-import styles from "./Users.module.css"
+import styles from "../../../styles/Users.module.css"
+
+import usePaginateArray from "../../../CustomHooks/usePaginateArray";
+import usePages from "../../../CustomHooks/usePages";
 
 //Going to pass much of what I have as props
 
-export const UsersList = (props:any) => {
+export const UsersList:NextPage = (props:any) => {
     const [pageNum, setPageNum] = useState<number>(1);
-    const perPage = 3;
+    const perPage = 2;
 
     const changePage = (event:any) => {
         setPageNum(Number(event.target.id))
     }
 
-    const indexOfLastDoc = pageNum * perPage;
-    const indexOfFirstDoc = indexOfLastDoc - perPage;
-    const currentUsers = props.finalList.slice(indexOfFirstDoc, indexOfLastDoc);
+    const currentUsers = usePaginateArray(pageNum, perPage, props.finalList)
 
     const listedUsers = currentUsers.map((item:any) =>
     <tr key={item.Id}>
@@ -44,23 +46,30 @@ export const UsersList = (props:any) => {
     </tr>
     );
 
-    const pageNumbers = [];
-    for(let i = 1; i <= Math.ceil(props.finalList.length / perPage); i++) {
-        pageNumbers.push(i)
-        if (i == 20) i = Math.ceil(props.finalList.length / perPage)
-    }
+    const pageNumbers = usePages(
+        pageNum,
+        props.finalList.length,
+        perPage
+    );
 
-    const renderPageNums = pageNumbers.map((pageNum:number) => 
+    const renderPageNums = pageNumbers.map((pageNum:number | string, index:number) => 
         <li
-        key={pageNum}
+        key={index}
         id={String(pageNum)}
-        onClick={changePage}
-        className={styles.pageButton}
+        className={styles.pagesList}
         >
-        {pageNum}
+            <button
+            key={index}
+            id={String(pageNum)}
+            onClick={changePage}
+            className={styles.pageButton}
+            disabled={pageNum === "..." ? true : false}
+            >
+                {pageNum}
+            </button>
         </li>
     )
-
+    
     const handleInvite = async(rec:string, e:any) => {
         e.preventDefault();
         const sender = auth.currentUser
@@ -71,9 +80,7 @@ export const UsersList = (props:any) => {
             await setDoc(doc(database, "fillAUser", rec), {
              Invites: arrayUnion(sender?.displayName + " Wants to play on: " + date)
           }, {merge: true})
-        } catch(error) {
-          console.log(error)
-          }
+        } catch(error) {}
         }
     }
 

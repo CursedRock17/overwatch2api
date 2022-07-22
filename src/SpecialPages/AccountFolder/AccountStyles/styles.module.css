@@ -63,6 +63,11 @@
   font-size: 20px;  
 }
 
+.signOut:hover {
+  text-shadow: 3px 1px 5px #ffee10;
+  cursor: pointer;
+}
+
 .signOutDiv{
   display: flex;
   justify-content: center;
@@ -152,6 +157,11 @@
   box-shadow: 1px 1px rgb(232, 230, 230);
 }
 
+.updateProfile:hover {
+  text-shadow: 3px 1px 5px #ffee10;
+  cursor: pointer; 
+}
+
 .portrait {
   border-radius: 16px;
   background-color: #116466;
@@ -223,9 +233,15 @@ font-size: 18px;
 .currentSet{
   color: #116466;
   padding-left: 20%;
+  font-size: 24px;
 }
 
-
+.top h1 {
+  font-size: 32px;
+}
+.mainAccountDetails h1 {
+  font-size: 32px;
+}
 
 @media (max-width: 600px) {
   .signOut {
@@ -240,7 +256,20 @@ font-size: 18px;
   .changeNameButton {
     font-size: 10px;
   }
+
+  .top h1 {
+    font-size: 16px;
+  }
+
+  .mainAccountDetails h1 {
+    font-size: 16px;
+  }
+
+  .currentSet{
+    font-size: 12px;
+  }
 }
+
 
 @media (min-width: 1200px) {
   .signOut {
@@ -254,5 +283,17 @@ font-size: 18px;
   }
   .changeNameButton {
     font-size: 14px;
+  }
+
+  .top h1 {
+    font-size: 48px;
+  }
+
+  .mainAccountDetails h1 {
+    font-size: 48px;
+  }
+
+  .currentSet {
+    font-size: 36px;
   }
 }

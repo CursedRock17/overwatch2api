@@ -1,5 +1,16 @@
 import React from 'react'
 import styles from './MainCompStyles/styles.module.css'
+
+import Image from 'next/image'
+
+import DefeatScreen from "../../public/Pictures/DefeatScreen.jpeg"
+import BlizChars from "../../public/Pictures/BlizCharacters.jpeg"
+import SelectScreen from "../../public/Pictures/OverwatchSelectScreen.jpeg"
+import NoSmoke from "../../public/Pictures/NoSmoke.jpeg"
+import Win from "../../public/Pictures/Win.jpeg"
+import DatePic from "../../public/Pictures/Date.jpeg"
+import TeamKill from "../../public/Pictures/TeamKill.jpeg"
+
 //with different colors, images, and sizes
 //Can't really use DRY here because we want a differnet flow 
 
@@ -18,15 +29,15 @@ export const Body = () => {
             Without proper communication and roles the odds of a 
             loss are much higher than that of a win.
         </p>
-        <img src="../../Pictures/DefeatScreen.jpeg" className={styles.defImage}></img>
+        <Image src={DefeatScreen} className={styles.defImage}></Image>
         </div>
 
-        <img src="../../Pictures/BlizCharacters.jpeg" className={styles.FullImage}></img>
+        <Image src={BlizChars} layout="responsive" className={styles.FullImage}></Image>
         <h1 className={styles.BodyHeader}>
             Characters
         </h1>
         <div className={styles.Split}>
-        <img src="../../Pictures/OverwatchSelectScreen.jpeg" className={styles.defImage}></img>
+        <Image src={SelectScreen} className={styles.defImage}></Image>
         <p className={styles.BodyText}>
             When playing video games there's always a meta to follow.
             Many times the meta isn't the characters that you want to play,
@@ -39,15 +50,15 @@ export const Body = () => {
             The Objectives
         </h1>
         <div className={styles.general}>
-        <a target="_blank" href="https://icons8.com/icon/iojFFfD8F9SP/no-smoke"> <img src="../../Pictures/NoSmoke.jpeg"></img> </a>
+        <a target="_blank" href="https://icons8.com/icon/iojFFfD8F9SP/no-smoke"> <Image src={NoSmoke}></Image> </a>
         <p>
             Create a nontoxic and efficient environment
         </p>
-        <a target="_blank" href="https://icons8.com/icon/23549/best-seller"> <img src="../../Pictures/Win.jpeg"></img></a>
+        <a target="_blank" href="https://icons8.com/icon/23549/best-seller"> <Image src={Win}></Image></a>
         <p>
             Ensure you pick the best people for your gameplan
         </p>
-        <a target="_blank" href="https://icons8.com/icon/12776/calendar"> <img src="../../Pictures/Date.jpeg" ></img> </a>
+        <a target="_blank" href="https://icons8.com/icon/12776/calendar"> <Image src={DatePic}></Image> </a>
         <p>
             Keeping up to date on the most effective tactics
         </p>
@@ -64,7 +75,7 @@ export const Body = () => {
             the flip side, you can filter out certain options in order to find online players
             most likely to engage with your style of gameplay.
         </p>
-        <img src="../../Pictures/TeamKill.jpeg" className={styles.defImage}></img>
+        <Image src={TeamKill} className={styles.defImage}></Image>
         </div>
     </div>
     )

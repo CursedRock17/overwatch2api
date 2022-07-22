@@ -37,4 +37,37 @@ export const DropdownInputPlaystyle = (props:any) => {
     )
 }
 
-export default { DropdownInputPlaystyle, DropdownInputRegion }
+export const DropdownInputRank = (props:any) => {
+    return (
+    <select 
+        title="Rank"
+        onChange={(e) => props.change(e.target.value)} 
+        >
+        <option value="Unset">Unset</option>
+        <option value="Bronze">Bronze</option>
+        <option value="Silver">Silver</option>
+        <option value="Gold">Gold</option>
+        <option value="Platnium">Platnium</option>
+        <option value="Diamond">Diamond</option>
+        <option value="Master">Master</option>
+        <option value="Grandmaster">Grandmaster</option>
+        <option value="Top 500">Top 500</option>
+    </select>
+    )
+}
+
+export const DropdownInputGamemode = (props:any) => {
+    return (
+    <select 
+        title="Gamemode"
+        onChange={(e) => props.change(e.target.value)} 
+        >
+        <option value="Any Mode">Any Mode</option>
+        <option value="Quick Play">Quick Play</option>
+        <option value="Competitive">Competitive</option>
+    </select>
+    )
+}
+
+
+export default { DropdownInputPlaystyle, DropdownInputRegion, DropdownInputRank, DropdownInputGamemode }

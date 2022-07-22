@@ -5,6 +5,9 @@ import styles from '../AccountStyles/styles.module.css'
 import { auth, database } from "../../../Firebase/FirebaseInit";
 import { doc, getDoc } from "firebase/firestore";
 
+import Image from "next/image";
+
+
 export const HeroSelect = () => {
     const[currentSetting, setCurrentSetting] = useState([])
 
@@ -18,9 +21,7 @@ export const HeroSelect = () => {
             if(docRef.exists()){
                 setCurrentSetting(docRef.data()?.Heroes)
             }
-            else {
-                console.log("Doesnt exist")
-            }
+            else {}
         }
     }
 
@@ -37,7 +38,7 @@ export const HeroSelect = () => {
         }
     }
 
-    const herosMap = chars.map((hero) => 
+    const herosMap = chars.map((hero:string) => 
     <li key={hero}>
        <p className={styles.listItem}> {hero} </p> 
     </li>
@@ -117,7 +118,7 @@ const HeroTemplate = (props:any) => {
     }
 
     //Going to make these stores in the pictures section
-    const link = "../../../../../Pictures/Characters/" + props.hero + ".png"
+    const link = "/Pictures/Characters/" + props.hero + ".png"
 
     return (
         <>
@@ -126,7 +127,7 @@ const HeroTemplate = (props:any) => {
         onClick={() => heroSelected(props.hero)}
         >
             {props.hero}
-            <img className={styles.heroImage} src={link}></img>
+            <Image className={styles.heroImage} src={link} width={70} height={100}></Image>
         </button>
         </>
         
