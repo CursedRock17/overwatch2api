@@ -13,7 +13,7 @@ import usePages from "../../../CustomHooks/usePages";
 
 export const UsersList:NextPage = (props:any) => {
     const [pageNum, setPageNum] = useState<number>(1);
-    const perPage = 2;
+    const perPage = 25;
 
     const changePage = (event:any) => {
         setPageNum(Number(event.target.id))

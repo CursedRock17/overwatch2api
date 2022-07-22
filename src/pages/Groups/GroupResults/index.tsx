@@ -187,7 +187,7 @@ const GroupResults:NextPage = () => {
 
 const GroupsList = (props:any) => {
    const [pageNum, setPageNum] = useState<number>(1);
-   const perPage:number = 2;
+   const perPage:number = 25;
    const navigate = useRouter()
 
    const changePage = (event:any) => {
