@@ -27,7 +27,7 @@ const DocumentPage:NextPage = () => {
             Additionally, the API only supports GET requests all other methods will fail.
             </p>
 
-            <h2 className={styles.TopHeader}>Endpoints</h2>
+            <h2 className={styles.TopHeader}>Endpoints</h2> 
             
             <ul>
                 <li className={styles.EndpointsList}>/api/v1/hero/[hero_id]</li>
