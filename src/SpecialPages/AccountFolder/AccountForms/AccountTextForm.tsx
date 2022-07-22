@@ -21,7 +21,9 @@ export const AccountTextForm = (props:any) => {
             if(docRef.exists()){
                 setCurrentSetting(docRef.data()?.[title])
             }
-            else {}
+            else {
+                console.log("Doesnt exist")
+            }
         }
     }
 
@@ -49,11 +51,13 @@ export const AccountTextForm = (props:any) => {
         }
     }
 
-    const updateProfileName = async(value:string) => {
+    const updateProfileName = async(value:any) => {
         if(auth.currentUser){
          await updateProfile(auth.currentUser, {
             displayName: value
-          })
+          }).catch((error) => {
+            console.log(error)
+          });
         }
       }
 

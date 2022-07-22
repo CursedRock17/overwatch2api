@@ -18,7 +18,6 @@ export const Navbar = () => {
                    <NavButton title="Account"/>
                    <NavButton title="Search"/>
                    <NavButton title="AboutAPI"/>
-                   <NavButton title="Groups" />
             </div>
         </div>
     )

@@ -31,7 +31,9 @@ export const Account = () => {
         signOut(auth).then(() => {
             // Sign-out successful.
             setSignedIn(false);
-          })
+          }).catch((error) => {
+            // An error happened.
+          });
       }
       
     return (
@@ -41,7 +43,7 @@ export const Account = () => {
                     ?
             <div className={styles.mainSection}>
             <h1 className={styles.currentName}>
-               Current Account: {currentUser}
+                Current Account: {currentUser} 
             </h1>
             <div className={styles.changeName}>
             </div>
